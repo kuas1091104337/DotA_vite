@@ -1,13 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant-TW">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.ico" />
+    <!-- 修正手機旋轉後會畫面放大的問題，自動抓手機解析度，設定頁面初始縮放比1 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <meta name="keywords" content="陳宥宏的作品網站 Dot A">
+    <meta name="description" content="陳宥宏的作品網站 Dot A">
+    <meta name="author" content="陳宥宏, Amos Chen">
+    <meta name="copyright" content="本網頁著作權屬陳宥宏, All Rights Reserved">
+    <meta name="apple-mobile-web-app-title" content="陳宥宏的作品網站 Dot A">
+    <!--網頁存手機主畫面，打開後全螢幕的效果-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#308375" />
+    <!--解決手機網頁上的數字會自動變成超連結的情況-->
+    <meta name="format-detection" content="telephone=no">
+    <!--解決手機網頁上的數字會自動變成超連結的情況-->
+    <meta name="format-detection" content="address=no">
+    <link rel="icon" href="/src/assets/favicon.ico" />
+    <!-- 把圖片的檔名設為 apple-touch-icon.png 手機會抓這張圖做為icon圖示 -->
+    <link rel="apple-touch-icon" sizes="120x120" href="/src/assets/apple-touch-icon.png">
+    <title>陳宥宏的作品網站 Dot A</title>
   </head>
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
+
+
+

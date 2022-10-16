@@ -9,6 +9,7 @@ import en from "@/language/en-US.json";
 import jp from "@/language/jp-JP.json";
 import "virtual:svg-icons-register";
 import '@/assets/scss/normalize.scss';
+import '@/assets/scss/box3dBase.scss';
 
 // const i18nLocale = localStorage.getItem('locale') || 'zh-TW';
 const app = createApp(App);

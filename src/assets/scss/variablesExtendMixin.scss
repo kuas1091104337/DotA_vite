@@ -1,20 +1,17 @@
-$grayColor:#4d4d4d;
-$BGcolor:#7cbfb4;
-$dBGcolor:#308375;
-$lPcolor:#fed5d6;
-$Pcolor:#F28587;
-$dPcolor:#a72d30;
-
 $facebookBlue:#3b5998;
 $twitterBlue:#1c94e0;
 $lineGreen:#00b900;
 $youtubeRed:#ff0000;
 
-$headH:44px;
-$DAborderW:5px;
+$mobileMinWidth:360px;
 $deskMinWidth:1200px;
 $deskMaxWidth:2560px;
 
+%ul-reset{
+  list-style: none;
+	padding-left: 0;
+	margin:0;
+}
 %text-indent{
   white-space:nowrap;
   overflow:hidden;
@@ -34,14 +31,3 @@ $deskMaxWidth:2560px;
 	height:0;
 	border-style:solid;
 }
-
-@mixin beforeAfterTriangleSet($borderWidth, $borderColor){
-	@extend %beforeAfterTriangleBaseSet; 
-	border-width:$borderWidth;
-	border-color:$borderColor;
-	@content;
-}
-//	@include beforeAfterTriangleSet(8px,transparent transparent $深藍 $深藍);
-//	@include beforeAfterTriangleSet(10px,transparent transparent $藍 transparent){
-//		position:absolute;
-//	};

@@ -1,20 +1,23 @@
 <script setup>
-const menuOpen = ref(false),
-      langOpen = ref(false),
+const menuIsOpen = ref(false),
+      langIsOpen = ref(false),
       headBgFn = () => {
-        menuOpen.value = false;
-        langOpen.value = false;
+        menuIsOpen.value = false;
+        langIsOpen.value = false;
       },
-      menuFn = () => menuOpen.value = !menuOpen.value,
-      menuClose = () => menuOpen.value = false,
-      langMenuFn = () => langOpen.value = !langOpen.value;
+      menuFn = () => menuIsOpen.value = !menuIsOpen.value,
+      menuClose = () => menuIsOpen.value = false,
+      langMenuFn = () => langIsOpen.value = !langIsOpen.value;
 </script>
 
 <template>
-  <header :class="['head',{open:menuOpen}]">
+  <header :class="['head',{open:menuIsOpen}]">
     <div class="head_bg" @click="headBgFn"></div>
     <div class="head_wrap">
-      <h1 class="head__title"><span class="head__title_txt">Dot A 陳宥宏的作品網站</span></h1>
+      <h1 class="head__title">
+        <i class="head__title_icon"><SvgIcon name="icon-dota-w" color="#fff"/></i>
+        <span class="head__title_txt">Dot A 陳宥宏的作品網站</span>
+      </h1>
       <div class="head__mBtn" @click="menuFn">
         <div class="head__mBtn_wrap"><span class="head__mBtn__bar"></span></div>
       </div>
@@ -35,12 +38,13 @@ const menuOpen = ref(false),
         <li class="head__menu_item">
           <a class="head__menu__link" data-name="作品區" @click="menuClose">作品區</a>
         </li>
-        <li class="head__menu_dLang">
+        <li class="head__menu_lang">
           <a
-            :class="['head__menu__link head__menu__lang',{open:langOpen}]" 
+            :class="['head__menu__link head__menu__lang',{open:langIsOpen}]" 
             title="語言選擇" 
             @click="langMenuFn"
           >
+            <i class="head__menu___icon"><SvgIcon name="icon-globe" color="#fff"/></i>
             語言
           </a>
           <ul class="head__menu__menu">
@@ -55,6 +59,7 @@ const menuOpen = ref(false),
 </template>
 
 <style lang="scss">
+  @import "@/assets/scss/dotaBase.scss";
   %menuBar{
     background-color:$BGcolor;
     display:block;
@@ -70,10 +75,10 @@ const menuOpen = ref(false),
   }
   .head{
     color:#fff;
-    line-height:$headH;
+    line-height:$DAheadH;
     width:100%;
     min-width:320px;
-    height:$headH;
+    height:$DAheadH;
     background-image: url("@/assets/img/index/HFbg.jpg");
     box-shadow:0 0 5px rgba(#000,.2);
     position:fixed;
@@ -85,11 +90,17 @@ const menuOpen = ref(false),
       height: 100%;
       background-color:rgba(128,128,128,.75);
       opacity: 0;
-      margin-top:$headH;
+      margin-top:$DAheadH;
       position: fixed;
       top:0;
       left:0;
       transform:translate3d(100%,0,0);
+      .open &{
+        opacity: 1;
+        backdrop-filter:blur(3px);
+        transform:translate3d(0,0,0);
+        transition:opacity .4s, backdrop-filter .4s;
+      }
     }
     &_wrap{
       height:100%;
@@ -104,19 +115,15 @@ const menuOpen = ref(false),
       display: flex;
       align-items:center;
       margin:0 0 0 8px;
-      &:before{
-        content:"";
+      &_icon{
         width:30px;
         height:28px;
-        background-image: url("@/assets/img/index/DotAw.svg");
-        background-position:center;
-	      background-size:cover;
         margin-right:6px;
       }
       &_txt{transform:skew(-6deg);}
     }
     &__mBtn{
-      width:$headH;
+      width:$DAheadH;
 			height:100%;
       &_wrap{
         width:36px;
@@ -125,7 +132,6 @@ const menuOpen = ref(false),
 				border-radius:50%;
 				margin: 4px;
         position: relative;
-        transition: .3s;
       }
       &__bar{
         @extend %menuBar;
@@ -134,50 +140,55 @@ const menuOpen = ref(false),
         margin: auto;
         right: 0;
         bottom: 0;
-        transition:width .3s, background-color .3s, transform .3s;
+        transition:width .4s, background-color .4s, transform .4s;
         &:before, &:after{
           @extend %menuBar;
           content:"";
           width: 100%;
           height: 100%;
-          transition:width .3s, transform .3s;
+          transition: transform .4s;
         }
         &:before{transform:translate3d(0,-7px,0);}
         &:after{transform:translate3d(0,7px,0);}
+        .open &{
+          width:26px;
+          background-color: transparent;
+          transform:rotate(-180deg);
+          &:before{transform:translate3d(0,0,0) rotate(-45deg)}
+          &:after{transform:translate3d(0,0,0) rotate(45deg)}
+        }
       }
     }
     &__menu{
+      @extend %ul-reset;
       width:65%;
       max-width: 320px;
 			height:100%;
       background-image: url("@/assets/img/index/HFbg.jpg");
 			position:fixed;
-			top:$headH;
+			top:$DAheadH;
 			right: 0;
       transform:translate3d(100%,0,0);
-      transition:transform .3s;
+      transition:transform .4s;
+      .open &{transform:translate3d(0,0,0)}
       &__link, &____link{
         color:#fff;
-				text-shadow:0 1px 1px rgba(#000,.2);
+				text-shadow:0 1px 1px rgba(#000,.3);
         display: block;
         cursor: pointer;
 	 			box-shadow:0 -1px 0 0 rgba(#000,.2) inset;
-        transition: color .3s, text-shadow .3s, background-color .3s;
+        transition: color .4s, text-shadow .4s, background-color .4s;
 				&:hover{@extend %linkActive;}
       }
-      &__link{padding:0 15px;}
+      &__link{
+        padding:0 15px;
+        .active &{@extend %linkActive;}
+      }
       &____link{padding:0 30px;}
       &__lang{
         display: flex;
         align-items:center;
         position: relative;
-        &:before{
-				  // "\e9c9"
-          content:"\e901";
-          font-size:26px;
-          font-family:icomoon;
-          margin-right:8px;
-        }
         &:after{
           @extend %beforeAfterTriangleBaseSet;
           border-width:6px 6px 6px 0;
@@ -185,49 +196,31 @@ const menuOpen = ref(false),
           position:absolute;
           right:20px;
           top:16px;
-          transition:border-color .3s, transform .3s;
+          transition:border-color .4s, transform .4s;
         }
         &.open{
           @extend %linkActive;
           &:after{
             border-right-color:$BGcolor;
             transform:rotate(-90deg);
-            transition:border-color .5s, transform .5s;
           }
-          + .head__menu__menu{
-            height:$headH*3;
-            transition:height .5s;
-          }
+          .svg-icon > *{fill:$BGcolor;}
+          + .head__menu__menu{height:$DAheadH*3}
         }
       }
+      &___icon{
+        width: 26px;
+        height: 26px;
+        margin-right:8px;
+        > .svg-icon > *{transition:fill .4s}
+      }
       &__menu{
+        @extend %ul-reset;
         height: 0;
         overflow: hidden;
-        transition:height .3s;
+        transition:height .4s;
       }
     }
-    &.open{
-      .head_bg{
-        opacity: 1;
-        backdrop-filter:blur(3px);
-        transform:translate3d(0,0,0);
-        transition:opacity .5s, backdrop-filter .5s;
-      }
-      .head__menu{
-        transform:translate3d(0,0,0);
-        transition:transform .5s;
-      }
-      .head__mBtn__bar{
-        width:26px;
-        background-color: transparent;
-        transform:rotate(-180deg);
-        &:before{transform:translate3d(0,0,0) rotate(-45deg)}
-        &:after{transform:translate3d(0,0,0) rotate(45deg)}
-      }
-    }
-  }
-  .active > .head__menu__link{
-    @extend %linkActive;
   }
   // ===== 桌機版型區 =====
   @media screen and (min-width: 1024px) {
@@ -251,23 +244,18 @@ const menuOpen = ref(false),
             border-right-color: #fff;
             transform: rotate(0deg);
           }
+          .svg-icon > *{fill: #fff;}
           + .head__menu__menu{height: 0;}
         }
-        &_dLang:hover{
+        &_lang:hover{
           > .head__menu{
             &__lang{
               color:#fff;
               text-shadow:0 1px 1px rgba($dBGcolor,.6);
               background-color:$BGcolor;
-              &:after{
-                transform:rotate(-90deg);
-                transition:transform .5s;
-              }
+              &:after{transform:rotate(-90deg)}
             }
-            &__menu{
-              height:$headH*3;
-              transition:height .5s;
-            }
+            &__menu{height:$DAheadH*3}
           }
         }
         &__menu{background-image: url("@/assets/img/index/HFbg.jpg");}

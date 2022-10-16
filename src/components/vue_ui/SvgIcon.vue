@@ -12,13 +12,9 @@ const props = defineProps({
           default: "#333",
         },
       }),
-      svgName = computed(() => {
-        if (props.name.includes("/")) {
-          return `#${props.name}`;
-        } else {
-          return `#/${props.name}`;
-        }
-      }),
+      svgName = computed(() => 
+        props.name.includes('/') ? `#${props.name}` : `#/${props.name}`
+      ),
       svgClass = computed(() =>
         props.className ? "svg-icon " + props.className : "svg-icon"
       );
@@ -33,17 +29,17 @@ const props = defineProps({
 <style lang="scss">
 .svg{
   &-icon{
+    vertical-align: top;
     width: 100%;
     height: 100%;
-    max-width: 36px;
-    max-height: 36px;
-    /* max-width: 100px;
-    max-height: 100px; */
+    // max-width: 36px;
+    // max-height: 36px;
     fill: currentColor;
     overflow: hidden;
   }
   &-shadow{
-    filter:drop-shadow(2px 1px 0 rgba(#f0f, .8)) drop-shadow(-2px -1px 0 rgba(#0ff, .8));
+    filter:drop-shadow(1px 1px 0 rgba(#f0f,.8)) 
+           drop-shadow(-1px -1px 0 rgba(#0ff,.8));
   }
 }
 </style>

@@ -14,8 +14,9 @@
 </template>
 
 <style lang="scss">
+  @import "@/assets/scss/dotaBase.scss";
   .DAfeelings{
-    height:calc(100vh - ($headH + $DAborderW));
+    height:calc(100vh - ($DAheadH + $DAborderW));
     overflow: hidden;
     position:relative;
     &.active:before{transform:scale3d(1,1,1);}

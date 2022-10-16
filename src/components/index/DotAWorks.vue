@@ -1,10 +1,21 @@
 <script>
 // import "@/lib/moveDirection.scss";
+import NJA from '@/assets/img/index/works/NJA.jpg';
+import DadsKalbi from '@/assets/img/index/works/DadsKalbi.jpg';
+import BrainSport from '@/assets/img/index/works/BrainSport.jpg';
+import BSfindBug from '@/assets/img/index/works/BSfindBug.jpg';
+import BSgoodStar from '@/assets/img/index/works/BSgoodStar.jpg';
+import tite2014 from '@/assets/img/index/works/tite2014.jpg';
+import banner from '@/assets/img/index/works/banner.jpg';
+import gifBanner from '@/assets/img/index/works/gifBanner.jpg';
+import edm from '@/assets/img/index/works/edm.jpg';
+import video from '@/assets/img/index/works/video.jpg';
 const workStyle = ref('all'),
       workArr = reactive([
                   {
                     style:'ofclWeb',
-                    src:'@/assets/img/index/works/NJA.jpg',
+                    // src:'NJA',
+                    src:'https://kuas1091104337.github.io/images/index/NCA.jpg',
                     alt:'Net Japanese 網路日文',
                     title:'網路日文 &  NJ3 介面優化',
                     made:'RWD / JQ / ajax / scss / Ai',
@@ -12,7 +23,7 @@ const workStyle = ref('all'),
                   },
                   {
                     style:'ofclWeb',
-                    src:'@/assets/img/index/works/DadsKalbi.jpg',
+                    src:'DadsKalbi',
                     alt:'Dad\'s Kalbi 韓式傳統料理',
                     title:'Dad\'s Kalbi 韓式傳統料理',
                     made:'RWD / JQ / ajax / scss / Ps',
@@ -20,7 +31,7 @@ const workStyle = ref('all'),
                   },
                   {
                     style:'ofclWeb',
-                    src:'@/assets/img/index/works/BrainSport.jpg',
+                    src:'BrainSport',
                     alt:'BrainSport web',
                     title:'BrainSport 官網',
                     made:'RWD / JQ / CSS / Ps / Ai',
@@ -28,7 +39,7 @@ const workStyle = ref('all'),
                   },
                   {
                     style:'actWeb',
-                    src:'@/assets/img/index/works/BSfindBug.jpg',
+                    src:'BSfindBug',
                     alt:'BS系列 神手來找碴',
                     title:'BS系列 神手來找碴',
                     made:'RWD / scss / JQ / Ps / Ai',
@@ -36,7 +47,7 @@ const workStyle = ref('all'),
                   },
                   {
                     style:'actWeb',
-                    src:'@/assets/img/index/works/BSgoodStar.jpg',
+                    src:'BSgoodStar',
                     alt:'BS系列 跪求好評五星級',
                     title:'BS系列 跪求好評五星級',
                     made:'RWD / scss / JQ / Ps / Ai',
@@ -44,7 +55,7 @@ const workStyle = ref('all'),
                   },
                   {
                     style:'ofclWeb',
-                    src:'@/assets/img/index/works/tite2014.jpg',
+                    src:tite2014,
                     alt:'2014 台灣國際旅展 mobile web',
                     title:'2014 台灣國際旅展 mobile web',
                     made:'mobile web / css / JQ / Ps / Ai',
@@ -52,7 +63,7 @@ const workStyle = ref('all'),
                   },
                   {
                     style:'oldWorks',
-                    src:'@/assets/img/index/works/banner.jpg',
+                    src:banner,
                     alt:'banner 設計',
                     title:'banner 設計',
                     made:'Photoshop / illustrator',
@@ -60,7 +71,7 @@ const workStyle = ref('all'),
                   },
                   {
                     style:'oldWorks',
-                    src:'@/assets/img/index/works/gifBanner.jpg',
+                    src:gifBanner,
                     alt:'gif banner設計',
                     title:'gif banner設計',
                     made:'Photoshop / illustrator',
@@ -68,7 +79,7 @@ const workStyle = ref('all'),
                   },
                   {
                     style:'oldWorks',
-                    src:'@/assets/img/index/works/edm.jpg',
+                    src:edm,
                     alt:'EDM 設計',
                     title:'EDM 設計',
                     made:'Photoshop / illustrator',
@@ -76,7 +87,7 @@ const workStyle = ref('all'),
                   },
                   {
                     style:'oldlWeb',
-                    src:'@/assets/img/index/works/video.jpg',
+                    src:video,
                     alt:'BS 7POKER 宣傳影片',
                     title:'BS 7POKER 宣傳影片',
                     made:'Photoshop',
@@ -157,8 +168,8 @@ const workStyle = ref('all'),
 </div>
 </template>
 
-<!-- <style lang="scss" src="@/lib/moveDirection.scss"></style> -->
 <style lang="scss">
+  @import "@/assets/scss/dotaBase.scss";
 	$worksBtnW:160px;
 	$worksBtnH:36px;
 	// @keyframes scaleShow1024 {
@@ -175,11 +186,11 @@ const workStyle = ref('all'),
 			justify-content:center;
 			padding-bottom:30px;
 			&_item{
-				color:$grayColor;
+				color:$GrayColor;
 				font-weight:bold;
 				line-height:34px;
 				background-color:#fff;
-				border: 2px solid $grayColor;
+				border: 2px solid $GrayColor;
 				padding:0 10px;
 				margin: 10px;
 				transition:.4s;
@@ -209,7 +220,7 @@ const workStyle = ref('all'),
 			}
 			> figure{
 				max-width:400px;
-				background-color:rgba($grayColor,.8);
+				background-color:rgba($GrayColor,.8);
 				padding: 20px 15px;
 				margin:0 auto;
 				overflow:hidden;
@@ -233,7 +244,7 @@ const workStyle = ref('all'),
 				left:0;
 			}
 			&___content{
-				text-shadow:0 1px 2px $grayColor;
+				text-shadow:0 1px 2px $GrayColor;
 				> h3 {
 					color:#fff;
 					font-size:18px;
@@ -346,7 +357,7 @@ const workStyle = ref('all'),
 			}
 			> figure, img{padding:0;}
 			figcaption{
-				background-color:rgba($grayColor,.9);
+				background-color:rgba($GrayColor,.9);
 				justify-content:center;
 				left:100%;
 			}

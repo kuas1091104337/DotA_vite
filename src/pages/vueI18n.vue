@@ -1,6 +1,6 @@
 <script setup>
 import { useI18n } from "vue-i18n";
-const { t, locale } = useI18n();
+const { locale } = useI18n();
 console.log(locale);
 watch(locale, (newlocale) => {
   console.log(newlocale);

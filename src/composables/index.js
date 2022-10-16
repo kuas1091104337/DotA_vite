@@ -1,4 +1,6 @@
 import { DivMousePosition } from './useDivMousePosition.js';
-import { StateSet } from './useState.js';
+import { GetWindowScrollVal } from './useGetWindowScrollVal.js';
+import { GetDomScrollVal } from './useGetDomScrollVal.js';
 export const useDivMousePosition = DivMousePosition;
-export const useState = StateSet; 
+export const useGetWindowScrollVal = GetWindowScrollVal; 
+export const useGetDomScrollVal = GetDomScrollVal; 

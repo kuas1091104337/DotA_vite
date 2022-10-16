@@ -86,19 +86,3 @@ textarea { overflow: auto; }
 }
 summary { display: list-item; }
 template, [hidden] { display: none; }
-
-// --- css共用區 (常用預設值) ---
-html, body{ 
-    font-size:18px;
-    font-family:"Microsoft YaHei", "Microsoft JhengHei", "PingFangTC", Arial, Helvetica, sans-serif;
-    width:100%;
-    min-width:320px;
-    height:100%;
-    -webkit-text-size-adjust:none; // 在 iOS 旋轉畫面鎖定文字不縮放 
-    -webkit-overflow-scrolling:touch; // 安卓和IOS使用滾動回彈效果 
-}
-a{
-  display:block;
-  -webkit-tap-highlight-color:rgba(#000,0);
-}
-*{box-sizing:border-box;}
