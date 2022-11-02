@@ -1,0 +1,114 @@
+{
+  "supply":{
+    "develoer":[
+      "Vue3",
+      "Vite / CLI",
+      "Pinia / Vuex",
+      "Vue Router",
+      "RESTful API",
+      "Axios / Ajax",
+      "JavaScript",
+      "Git Sourcetree"
+    ],
+    "interact":[
+      "Keyframes & Animation",
+      "Transition & Transform",
+      "Responsive Web Design",
+      "BEM : SCSS & SASS",
+      "jQuery"
+    ],
+    "seo":[
+      "HTML5 Tag",
+      "Google Search Console",
+      "Google AdWords"
+    ],
+    "uiux":[
+      "Sketch",
+      "Adobe XD",
+      "Figma",
+      "Photoshop"
+    ]
+  },
+  "worksArray":[
+    {
+      "style":"ofclWeb",
+      "src":"https://kuas1091104337.github.io/DotA_img/index/works/NCA.jpg",
+      "alt":"Net Vietnam 網路越文",
+      "title":"網路越文 &  NV4 介面優化",
+      "made":"RWD / JQ / ajax / scss / Ai",
+      "href":"javascript:;"
+    },
+    {
+      "style":"ofclWeb",
+      "src":"https://kuas1091104337.github.io/DotA_img/index/works/DadsKalbi.jpg",
+      "alt":"Dad's Kalbi 墨式傳統料理",
+      "title":"Dad's Kalbi 墨式傳統料理",
+      "made":"RWD / JQ / ajax / scss / Ps",
+      "href":"javascript:;"
+    },
+    {
+      "style":"ofclWeb",
+      "src":"https://kuas1091104337.github.io/DotA_img/index/works/BrainSport.jpg",
+      "alt":"BrainSport web",
+      "title":"BrainSport 停掉的官網",
+      "made":"RWD / JQ / CSS / Ps / Ai",
+      "href":"javascript:;"
+    },
+    {
+      "style":"actWeb",
+      "src":"https://kuas1091104337.github.io/DotA_img/index/works/BSfindBug.jpg",
+      "alt":"BS 神手來找碴",
+      "title":"BS 神手來找碴",
+      "made":"RWD / scss / JQ / Ps / Ai",
+      "href":"javascript:;"
+    },
+    {
+      "style":"actWeb",
+      "src":"https://kuas1091104337.github.io/DotA_img/index/works/BSgoodStar.jpg",
+      "alt":"BS 跪求好評五星級",
+      "title":"BS 跪求好評五星級",
+      "made":"RWD / scss / JQ / Ps / Ai",
+      "href":"javascript:;"
+    },
+    {
+      "style":"ofclWeb",
+      "src":"https://kuas1091104337.github.io/DotA_img/index/works/tite2014.jpg",
+      "alt":"2014 台灣國際旅展 mobile web",
+      "title":"2014 台灣國際旅展 mobile web",
+      "made":"mobile web / css / JQ / Ps / Ai",
+      "href":"javascript:;"
+    },
+    {
+      "style":"oldWorks",
+      "src":"https://kuas1091104337.github.io/DotA_img/index/works/banner.jpg",
+      "alt":"banner 設計",
+      "title":"banner 設計",
+      "made":"Photoshop / illustrator",
+      "href":"javascript:;"
+    },
+    {
+      "style":"oldWorks",
+      "src":"https://kuas1091104337.github.io/DotA_img/index/works/gifBanner.jpg",
+      "alt":"gif banner設計",
+      "title":"gif banner設計",
+      "made":"Photoshop / illustrator",
+      "href":"javascript:;"
+    },
+    {
+      "style":"oldWorks",
+      "src":"https://kuas1091104337.github.io/DotA_img/index/works/edm.jpg",
+      "alt":"EDM 設計",
+      "title":"EDM 設計",
+      "made":"Photoshop / illustrator",
+      "href":"javascript:;"
+    },
+    {
+      "style":"oldlWeb",
+      "src":"https://kuas1091104337.github.io/DotA_img/index/works/video.jpg",
+      "alt":"BS 7POKER 宣傳影片",
+      "title":"BS 7POKER 宣傳影片",
+      "made":"Photoshop",
+      "href":"javascript:;"
+    }
+  ]
+}

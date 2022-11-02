@@ -4,7 +4,7 @@
 <template>
   <WelcomeItem>
     <template #icon>
-      <SvgIcon name="icon-documentation" className="svg-shadow" color="#000" />
+      <SvgIcon name="icon-code" className="svg-shadow" color="#000" />
     </template>
     <template #heading>Documentation</template>
     Vue’s
@@ -13,7 +13,7 @@
   </WelcomeItem>
   <WelcomeItem>
     <template #icon>
-      <SvgIcon name="icon-tooling" className="svg-shadow" color="#000"/>
+      <SvgIcon name="icon-globe2" className="svg-shadow" color="#000"/>
     </template>
     <template #heading>Tooling</template>
     This project is served and bundled with
@@ -29,7 +29,7 @@
   </WelcomeItem>
   <WelcomeItem>
     <template #icon>
-      <SvgIcon name="icon-ecosystem" className="svg-shadow" color="#000"/>
+      <SvgIcon name="icon-search2" className="svg-shadow" color="#000"/>
     </template>
     <template #heading>Ecosystem</template>
     Get official tools and libraries for your project:
@@ -43,7 +43,7 @@
   </WelcomeItem>
   <WelcomeItem>
     <template #icon>
-      <SvgIcon name="icon-community" className="svg-shadow" color="#000"/>
+      <SvgIcon name="icon-user" className="svg-shadow" color="#000"/>
     </template>
     <template #heading>Community</template>
     Got stuck? Ask your question on
@@ -58,7 +58,7 @@
   </WelcomeItem>
   <WelcomeItem>
     <template #icon>
-      <SvgIcon name="icon-support" className="svg-shadow" color="#000"/>
+      <SvgIcon name="icon-window" className="svg-shadow" color="#000"/>
     </template>
     <template #heading>Support Vue</template>
     As an independent project, 

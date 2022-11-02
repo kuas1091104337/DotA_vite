@@ -4,10 +4,10 @@
 </script>
 
 <template>
-  <p>{{t('cancel')}}</p>
-  <p>{{t('email')}}</p>
-  <p>{{t('date')}}</p>
-  <p>{{t('subject')}}</p>
+  <p>{{t('DAabout')}}</p>
+  <p>{{t('DAskill')}}</p>
+  <p>{{t('DAwork')}}</p>
+  <p>{{t('DAlanguage')}}</p>
 </template>
 
 <style lang="scss">

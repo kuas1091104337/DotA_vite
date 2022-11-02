@@ -17,11 +17,15 @@ html, body{
     font-size:16px;
     font-family:"Microsoft YaHei", Helvetica, Arial, "Microsoft JhengHei", "PingFangTC", sans-serif;
     // 多國語言版	font-family:"Helvetica Neue",Helvetica,Arial,"微軟正黑體","微软雅黑","メイリオ","맑은 고딕",sans-serif;
-    width:100%;
-    min-width:$mobileMinWidth;
+    width:max(100%,$mobileMinWidth);
     height:100%;
     -webkit-text-size-adjust:none; // 在 iOS 旋轉畫面鎖定文字不縮放 
     -webkit-overflow-scrolling:touch; // 安卓和IOS使用滾動回彈效果 
+}
+#app{
+  height:100%;
+  display: flex;
+  flex-direction: column;
 }
 a{
   text-decoration:none;

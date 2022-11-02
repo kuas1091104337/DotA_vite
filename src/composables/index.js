@@ -1,6 +1,10 @@
-import { DivMousePosition } from './useDivMousePosition.js';
+// import { DivMousePosition } from './useDivMousePosition.js';
+import { DotAContextMenu } from './useDotAContextMenu.js';
 import { GetWindowScrollVal } from './useGetWindowScrollVal.js';
-import { GetDomScrollVal } from './useGetDomScrollVal.js';
-export const useDivMousePosition = DivMousePosition;
+// import { GetDomScrollVal } from './useGetDomScrollVal.js';
+import { ImgLoad } from './useImgLoad.js';
+// export const useDivMousePosition = DivMousePosition;
+export const useDotAContextMenu = DotAContextMenu; 
 export const useGetWindowScrollVal = GetWindowScrollVal; 
-export const useGetDomScrollVal = GetDomScrollVal; 
+// export const useGetDomScrollVal = GetDomScrollVal; 
+export const useImgLoad = ImgLoad; 

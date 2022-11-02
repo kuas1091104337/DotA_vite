@@ -1,4 +1,4 @@
-import { onMounted, onUnmounted, ref } from "vue"
+import { onMounted, onUnmounted, readonly, ref } from "vue"
 
 export function GetWindowScrollVal(){
   const windowScrollTop = ref(0),
@@ -8,6 +8,7 @@ export function GetWindowScrollVal(){
           const st = document.scrollingElement.scrollTop,
                 wh = window.innerHeight;
           windowScrollTop.value = st;
+          // windowScrollMiddle.value = st + wh*0.6;
           windowScrollMiddle.value = st + wh/2;
           windowScrollBottom.value = st + wh;
         };
@@ -19,5 +20,9 @@ export function GetWindowScrollVal(){
   onUnmounted(() => {
     window.removeEventListener('scroll',windowScrollFn);
   })
-  return { windowScrollTop, windowScrollMiddle, windowScrollBottom }
+  return { 
+    windowScrollTop:readonly(windowScrollTop), 
+    windowScrollMiddle:readonly(windowScrollMiddle), 
+    windowScrollBottom :readonly(windowScrollBottom)
+  }
 }

@@ -22,7 +22,7 @@ const props = defineProps({
 
 <template>
   <svg :class="svgClass" aria-hidden="true">
-    <use :xlink:href="svgName" :fill="color" />
+    <use :xlink:href="svgName" :fill="props.color" />
   </svg>
  </template>
   
@@ -37,9 +37,13 @@ const props = defineProps({
     fill: currentColor;
     overflow: hidden;
   }
-  &-shadow{
+  &-3d-shadow{
     filter:drop-shadow(1px 1px 0 rgba(#f0f,.8)) 
            drop-shadow(-1px -1px 0 rgba(#0ff,.8));
+  }
+  &-DAskills-shadow{
+    filter:drop-shadow(-1px -1px 0 $lPcolor)
+           drop-shadow(1px 1px 0 $dPcolor);
   }
 }
 </style>

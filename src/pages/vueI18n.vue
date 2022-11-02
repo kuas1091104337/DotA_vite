@@ -1,7 +1,7 @@
 <script setup>
 import { useI18n } from "vue-i18n";
 const { locale } = useI18n();
-console.log(locale);
+console.log(locale.value);
 watch(locale, (newlocale) => {
   console.log(newlocale);
   localStorage.setItem("locale", newlocale);
@@ -19,8 +19,8 @@ watch(locale, (newlocale) => {
     <select v-model="locale">
       <option disabled value="">語言選擇</option>
       <option value="zh-TW">zh-TW</option>
+      <option value="zh-CN">zh-CN</option>
       <option value="en-US">en-US</option>
-      <option value="jp-JP">jp-JP</option>
     </select>
   </div>
   <RouterView />

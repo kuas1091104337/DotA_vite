@@ -4,12 +4,12 @@ import { createI18n } from "vue-i18n";
 
 import App from '@/App.vue';
 import router from '@/router';
-import zh from '@/language/zh-TW.json';
-import en from "@/language/en-US.json";
-import jp from "@/language/jp-JP.json";
+import us from "@/language/en-US.json";
+import tw from '@/language/zh-TW.json';
+import cn from '@/language/zh-CN.json';
 import "virtual:svg-icons-register";
 import '@/assets/scss/normalize.scss';
-import '@/assets/scss/box3dBase.scss';
+import '@/assets/scss/dotaBase.scss';
 
 // const i18nLocale = localStorage.getItem('locale') || 'zh-TW';
 const app = createApp(App);
@@ -18,9 +18,9 @@ const i18n = createI18n({
         locale: localStorage.getItem('locale') || 'zh-TW',
         fallbackLocale: 'zh-TW',
         messages: {
-          'zh-TW': zh,
-          'en-US': en,
-          'jp-JP': jp
+          'en-US': us,
+          'zh-TW': tw,
+          'zh-CN': cn
         }
       });
 

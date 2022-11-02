@@ -1,196 +1,135 @@
-<script>
-// import "@/lib/moveDirection.scss";
-import NJA from '@/assets/img/index/works/NJA.jpg';
-import DadsKalbi from '@/assets/img/index/works/DadsKalbi.jpg';
-import BrainSport from '@/assets/img/index/works/BrainSport.jpg';
-import BSfindBug from '@/assets/img/index/works/BSfindBug.jpg';
-import BSgoodStar from '@/assets/img/index/works/BSgoodStar.jpg';
-import tite2014 from '@/assets/img/index/works/tite2014.jpg';
-import banner from '@/assets/img/index/works/banner.jpg';
-import gifBanner from '@/assets/img/index/works/gifBanner.jpg';
-import edm from '@/assets/img/index/works/edm.jpg';
-import video from '@/assets/img/index/works/video.jpg';
-const workStyle = ref('all'),
-      workArr = reactive([
-                  {
-                    style:'ofclWeb',
-                    // src:'NJA',
-                    src:'https://kuas1091104337.github.io/images/index/NCA.jpg',
-                    alt:'Net Japanese 網路日文',
-                    title:'網路日文 &  NJ3 介面優化',
-                    made:'RWD / JQ / ajax / scss / Ai',
-                    href:'javascript:;'
-                  },
-                  {
-                    style:'ofclWeb',
-                    src:'DadsKalbi',
-                    alt:'Dad\'s Kalbi 韓式傳統料理',
-                    title:'Dad\'s Kalbi 韓式傳統料理',
-                    made:'RWD / JQ / ajax / scss / Ps',
-                    href:'javascript:;'
-                  },
-                  {
-                    style:'ofclWeb',
-                    src:'BrainSport',
-                    alt:'BrainSport web',
-                    title:'BrainSport 官網',
-                    made:'RWD / JQ / CSS / Ps / Ai',
-                    href:'javascript:;'
-                  },
-                  {
-                    style:'actWeb',
-                    src:'BSfindBug',
-                    alt:'BS系列 神手來找碴',
-                    title:'BS系列 神手來找碴',
-                    made:'RWD / scss / JQ / Ps / Ai',
-                    href:'javascript:;'
-                  },
-                  {
-                    style:'actWeb',
-                    src:'BSgoodStar',
-                    alt:'BS系列 跪求好評五星級',
-                    title:'BS系列 跪求好評五星級',
-                    made:'RWD / scss / JQ / Ps / Ai',
-                    href:'javascript:;'
-                  },
-                  {
-                    style:'ofclWeb',
-                    src:tite2014,
-                    alt:'2014 台灣國際旅展 mobile web',
-                    title:'2014 台灣國際旅展 mobile web',
-                    made:'mobile web / css / JQ / Ps / Ai',
-                    href:'javascript:;'
-                  },
-                  {
-                    style:'oldWorks',
-                    src:banner,
-                    alt:'banner 設計',
-                    title:'banner 設計',
-                    made:'Photoshop / illustrator',
-                    href:'javascript:;'
-                  },
-                  {
-                    style:'oldWorks',
-                    src:gifBanner,
-                    alt:'gif banner設計',
-                    title:'gif banner設計',
-                    made:'Photoshop / illustrator',
-                    href:'javascript:;'
-                  },
-                  {
-                    style:'oldWorks',
-                    src:edm,
-                    alt:'EDM 設計',
-                    title:'EDM 設計',
-                    made:'Photoshop / illustrator',
-                    href:'javascript:;'
-                  },
-                  {
-                    style:'oldlWeb',
-                    src:video,
-                    alt:'BS 7POKER 宣傳影片',
-                    title:'BS 7POKER 宣傳影片',
-                    made:'Photoshop',
-                    href:'javascript:;'
-                  },
-                ]),
-      navArr = reactive([
-        {style:'all',title:'全部'},
-        {style:'ofclWeb',title:'官網專案'},
-        {style:'actWeb',title:'活動網頁'},
-        {style:'spaWeb',title:'一頁式商務網站'},
-        {style:'oldWorks',title:'早期作品'}
-      ]),
-      workStyleHandle = (val) => workStyle.value = val ;
+<script setup>
+// import { useImgLoad } from '@/composables';
+import { useI18n } from "vue-i18n";
+const {t} = useI18n(),
+			props = defineProps({
+				indexData:{
+					type:Object,
+					default:() => ({})
+				}
+			}),
+			emit = defineEmits(['DAworksEle']),
+			workStyle = ref('all'),
+			worksTag = ref([]),
+			worksArray = ref([]),
+			imgLoaded = ref(false),
+			DAbox = ref(null),
+      DAboxOffsetTop = ref(0),
+      DAboxOffsetBottom = ref(0),
+			workStyleChange = (val) => workStyle.value = val,
+			getDomOffset = () => {
+				const et = DAbox.value.offsetTop,
+							eh = DAbox.value.offsetHeight;
+				DAboxOffsetTop.value = et;
+				DAboxOffsetBottom.value = et + eh;
+				emit('DAworksEle', DAboxOffsetTop, DAboxOffsetBottom);
+			},
+			imgLoad = (imgArray) => {
+        let i = 0;
+        imgArray.forEach(el => {
+          const img = new Image();
+          img.src = el.src
+          img.onload = () => {
+            i++;
+            if(imgArray.length === i) {
+							imgLoaded.value = true;
+							getDomOffset();
+						};
+          }
+        });
+      };
+onUpdated(() => {
+	worksTag.value = props.indexData.worksTag;
+	worksArray.value = props.indexData.worksArray;
+	imgLoad(worksArray.value);
+	// imgLoad(props.indexData.worksArray);
+	// const { useImgLoaded } = useImgLoad(worksArray.value,'src');
+	// console.log(useImgLoaded.value);
+});
+window.addEventListener('resize',getDomOffset);
 </script>
 
 <template>
-<div class="DAworks DAbox">
-	<h2 class="DAbox__title">代表作選輯</h2>
-	<!-- s-1 -->
-	<!-- <input type="radio" name="DAworksCtrl" id="DAworks_all" class="DAworks_input" checked="yes">
-	<input type="radio" name="DAworksCtrl" id="DAworks_ofclWeb" class="DAworks_input">
-	<input type="radio" name="DAworksCtrl" id="DAworks_actWeb" class="DAworks_input">
-	<input type="radio" name="DAworksCtrl" id="DAworks_spaWeb" class="DAworks_input">
-	<input type="radio" name="DAworksCtrl" id="DAworks_oldWorks" class="DAworks_input">
-	<div class="DAworks_nav">
-		<label for="DAworks_all" class="DAworks_nav_item all">全部</label>
-		<label for="DAworks_ofclWeb" class="DAworks_nav_item ofclWeb">官網專案</label>
-		<label for="DAworks_actWeb" class="DAworks_nav_item actWeb">活動網頁</label>
-		<label for="DAworks_spaWeb" class="DAworks_nav_item spaWeb">一頁式商務網站</label>
-		<label for="DAworks_oldWorks" class="DAworks_nav_item oldWorks">早期作品</label>
-	</div>
-	<ul class="DAworks_list">
-		<li v-for="item in workArr" :key="item.title" :class="['DAworks__item '+item.style]">
-			<figure>
-				<img :src="item.src" :alt="item.alt">
-				<figcaption>
-					<div class="DAworks__item___content">
-						<h3>{{item.title}}</h3><p>專案製作由</p><p>{{item.made}}</p>
-					</div>
-					<div class="DAworks__item___btn">
-						<a :href="item.href"><em>快來瞧瞧</em><em>快來瞧瞧</em></a>
-					</div>
-				</figcaption>
-			</figure>
-		</li>
-	</ul> -->
-	<!-- s-3 -->
+<div ref="DAbox" class="DAworks DAbox">
+	<h2 class="DAbox__title">{{t('DAworkTitle')}}</h2>
 	<ul class="DAworks_nav">
 		<li
-			v-for="item in navArr" 
-			:key="item.style"
-			:class="['DAworks_nav_item',{selected:workStyle === item.style}]"
-			@click="workStyleHandle(item.style)"
+			:class="['DAworks_nav_item',{selected:workStyle === 'all'}]"
+			@click="workStyleChange('all')"
 		>
-			{{item.title}}
+			{{t('DAworksAll')}}
+		</li>
+		<li
+			:class="['DAworks_nav_item',{selected:workStyle === 'ofclWeb'}]"
+			@click="workStyleChange('ofclWeb')"
+		>
+			{{t('DAworks1')}}
+		</li>
+		<li
+			:class="['DAworks_nav_item',{selected:workStyle === 'actWeb'}]"
+			@click="workStyleChange('actWeb')"
+		>
+			{{t('DAworks2')}}
+		</li>
+		<li
+			:class="['DAworks_nav_item',{selected:workStyle === 'spaWeb'}]"
+			@click="workStyleChange('spaWeb')"
+		>
+			{{t('DAworks3')}}
+		</li>
+		<li
+			:class="['DAworks_nav_item',{selected:workStyle === 'oldWorks'}]"
+			@click="workStyleChange('oldWorks')"
+		>
+			{{t('DAworks4')}}
 		</li>
 	</ul>
 	<ul class="DAworks_list">
-		<!-- s-2 -->
-		<!-- <transition-group name="scale">
-			<li v-for="item in workArr" :key="item.title" class="DAworks__item"  v-show="workStyle === item.style || workStyle === 'all'"> -->
-			<li v-for="item in workArr" :key="item.title" :class="['DAworks__item',{selected: workStyle === item.style || workStyle === 'all'}]">
-				<figure v-mouseChasing>
-					<img :src="item.src" :alt="item.alt">
-					<figcaption>
-						<div class="DAworks__item___content">
-							<h3>{{item.title}}</h3><p>專案製作由</p><p>{{item.made}}</p>
-						</div>
-						<div class="DAworks__item___btn">
-							<a :href="item.href"><em>快來瞧瞧</em><em>快來瞧瞧</em></a>
-						</div>
-					</figcaption>
-				</figure>
-			</li>
-		<!-- </transition-group> -->
+		<Bbox3dLoading v-if="!imgLoaded"/>
+		<li 
+			v-for="item in worksArray" 
+			:key="item.title" 
+			:class="['DAworks__item',{selected: workStyle === item.style || workStyle === 'all'}]"
+		>
+			<SlotMousePos v-slot="{className}">
+				<img :src="item.src" :alt="item.alt">
+				<figcaption :class="className">
+					<div class="DAworks__item___content">
+						<h3>{{item.title}}</h3>
+						<p>{{t('DAworkMade')}}</p>
+						<p>{{item.made}}</p>
+					</div>
+					<div class="DAworks__item___btn">
+						<a :href="item.href">
+							<span>{{t('DAworkSee')}}</span>
+							<span>{{t('DAworkSee')}}</span>
+						</a>
+					</div>
+				</figcaption>
+			</SlotMousePos>
+		</li>
 	</ul>
 </div>
 </template>
 
 <style lang="scss">
-  @import "@/assets/scss/dotaBase.scss";
 	$worksBtnW:160px;
 	$worksBtnH:36px;
-	// @keyframes scaleShow1024 {
-  //   0% { width: 0; max-height: 0; padding: 0; margin-bottom:0; transform:scale3d(0,0,1); }
-  //   100% { width: 33.3333%; max-height: 450px; margin-bottom:20px; transform:scale3d(1,1,1); }
-  // }
 	.DAworks{
-		padding: 15px 20px 40px; // 15+25=40
+		padding: 15px 20px 40px;
 		position:relative;
-		// &_input{ position:absolute; top:165px; left:-20px; }
+		&_nav, &_list{@extend %ul-reset}
 		&_nav{
 			display:flex;
 			flex-wrap: wrap;
 			justify-content:center;
 			padding-bottom:30px;
 			&_item{
-				color:$GrayColor;
-				font-weight:bold;
+				color:$dGrayColor;
 				line-height:34px;
 				background-color:#fff;
-				border: 2px solid $GrayColor;
+				border: 2px solid $dGrayColor;
+				cursor:pointer;
 				padding:0 10px;
 				margin: 10px;
 				transition:.4s;
@@ -204,24 +143,21 @@ const workStyle = ref('all'),
 			}
 		}
 		&__item{
-			// s-1, s-3
+			font-size:14px;
 			width: 0;
 			max-height: 0;
-			margin:0 auto;
 			transform:scale3d(0,0,1);
 			transition:width .4s, max-height .4s, padding .4s, margin .4s, transform .4s;
-			// s-2 s-t + #DAworks_all:checked
-			// s-3
 			&.selected{
 				width: 100%;
-				max-height: 450px;
+				max-height: 435px;
 				margin-bottom:20px;
 				transform:scale3d(1,1,1);
 			}
 			> figure{
 				max-width:400px;
-				background-color:rgba($GrayColor,.8);
-				padding: 20px 15px;
+				background-color:rgba($dGrayColor,.8);
+				padding: 0 15px;
 				margin:0 auto;
 				overflow:hidden;
 				position:relative;
@@ -229,7 +165,7 @@ const workStyle = ref('all'),
 			img{
 				width:100%;
 				display:block;
-				padding: 80px 0 50px;
+				padding: 90px 0 65px;
 			}
 			figcaption{
 				text-align: center;
@@ -247,7 +183,6 @@ const workStyle = ref('all'),
 				text-shadow:0 1px 2px $GrayColor;
 				> h3 {
 					color:#fff;
-					font-size:18px;
 					font-weight:normal;
 					margin:0;
 				}
@@ -275,8 +210,7 @@ const workStyle = ref('all'),
 					transform:translate3d(0,0,$worksBtnH*-0.5);
 					transform-style:preserve-3d;
 				}
-				em{
-					font-style:normal;
+				span{
 					width:100%;
 					height:100%;
 					position:absolute;
@@ -296,24 +230,6 @@ const workStyle = ref('all'),
 			}
 		}
 	}
-	// s-1
-	// %DActrlChecked{ color:#fff; text-shadow:1px 1px 1px rgba($dBGcolor,.6); background-color:$BGcolor; border-color:#fff; box-shadow:0 2px 4px 2px rgba($dBGcolor,.6); }
-	// #DAworks{
-	// 	&_all:checked ~ .DAworks_nav > .all, &_ofclWeb:checked ~ .DAworks_nav > .ofclWeb,
-	// 	&_actWeb:checked ~ .DAworks_nav > .actWeb, &_spaWeb:checked ~ .DAworks_nav > .spaWeb,
-	// 	&_oldWorks:checked ~ .DAworks_nav > .oldWorks{@extend %DActrlChecked;}
-	// 	&_all:checked ~ .DAworks_list > li, &_ofclWeb:checked ~ .DAworks_list > .ofclWeb,
-	// 	&_actWeb:checked ~ .DAworks_list > .actWeb, &_spaWeb:checked ~ .DAworks_list > .spaWeb,
-	// 	&_oldWorks:checked ~ .DAworks_list > .oldWorks{ width: 100%; max-height: 450px; margin-bottom:20px; transform:scale3d(1,1,1); }
-	// }
-	// s-2
-	// .scale{
-	// 	&-enter, &-leave {
-  //     &-active{transition:width .4s, max-height .4s, margin .4s, transform .4s;}
-  //   }
-  //   &-enter-from, &-leave-to { width: 0; max-height: 0; margin-bottom:0; transform:scale3d(0,0,1); }
-  //   &-enter-to, &-leave-from { width: 100%; max-height: 450px; margin-bottom:20px; transform:scale3d(1,1,1); }
-	// }
 	@media screen and (min-width: 640px) {
 		.DAworks{
 			&_list:after{
@@ -322,7 +238,6 @@ const workStyle = ref('all'),
 				clear:both;
 			}
 			&__item{
-				// width: 50%; // s-2
 				float:left;
 				&.selected{
 					width: 50%;
@@ -330,17 +245,6 @@ const workStyle = ref('all'),
 				}
 			}
 		}
-		// s-1
-		// #DAworks{
-		// 	&_all:checked ~ .DAworks_list > li, &_ofclWeb:checked ~ .DAworks_list > .ofclWeb,
-		// 	&_actWeb:checked ~ .DAworks_list > .actWeb, &_spaWeb:checked ~ .DAworks_list > .spaWeb,
-		// 	&_oldWorks:checked ~ .DAworks_list > .oldWorks{width: 50%;}
-		// }
-		// s-2
-		// .scale{
-		// 	&-enter-from, &-leave-to {padding:0;}
-		// 	&-enter-to, &-leave-from { width:50%; padding:0 10px; }
-		// }
 	}
 	@media screen and (min-width: 640px) and (max-width: 1279px) {
     .DAworks{
@@ -349,47 +253,69 @@ const workStyle = ref('all'),
     }
   }
 	@media screen and (min-width: 1024px) {
+		@keyframes enter-top{
+			0%{top:-100%; left:0;}
+			100%{top:0; left:0;}
+		}
+		@keyframes enter-bottom{
+			0%{top:100%; left:0%;}
+			100%{top:0; left:0;}
+		}
+		@keyframes enter-right{
+			0%{top:0%; left:100%;}
+			100%{top:0; left:0;}
+		}
+		@keyframes enter-left{
+			0%{top:0%; left:-100%;}
+			100%{top:0; left:0;}
+		}
+		@keyframes leave-top{
+			0%{top:0; left:0;}
+			100%{top:-100%; left:0;}
+		}
+		@keyframes leave-bottom{
+			0%{top:0; left:0;}
+			100%{top:100%; left:0%;}
+		} 
+		@keyframes leave-right{
+			0%{top:0; left:0;}
+			100%{top:0%; left:100%;}
+		}
+		@keyframes leave-left{
+			0%{top:0; left:0;}
+			100%{top:0%; left:-100%;}
+		}
 		.DAworks__item{
-			// width: 33.3333%; // s-2
 			&.selected{
 				width: 33.3333%;
 				max-height: 300px;
 			}
 			> figure, img{padding:0;}
 			figcaption{
-				background-color:rgba($GrayColor,.9);
+				background-color:rgba($dGrayColor,.9);
 				justify-content:center;
 				left:100%;
+				&.mouseleave{
+					&_top{animation: leave-top .2s both}
+					&_right{animation: leave-right .2s both}
+					&_left{animation: leave-left .2s both}
+					&_bottom{animation: leave-bottom .2s both}
+				}
+				&.mouseenter{
+					&_top{animation: enter-top .2s both}
+					&_right{animation: enter-right .2s both}
+					&_left{animation: enter-left .2s both}
+					&_bottom{animation: enter-bottom .2s both}
+				}
 			}
 			&___content{
 				text-shadow:0 1px 2px rgba(#000,.6);
 				margin-bottom: 20px;
-				> h3 {
-					font-size: 21px;
-					margin-bottom: 20px;
-				}
+				> h3 {margin-bottom: 20px;}
 			}
 		}
-		// s-1
-		// #DAworks{
-		// 	&_all:checked ~ .DAworks_list > li,
-		// 	&_ofclWeb:checked ~ .DAworks_list > .ofclWeb,
-		// 	&_actWeb:checked ~ .DAworks_list > .actWeb,
-		// 	&_spaWeb:checked ~ .DAworks_list > .spaWeb,
-		// 	&_oldWorks:checked ~ .DAworks_list > .oldWorks{ width: 33.3333%; max-height: 300px; }
-		// }
-		// s-2
-		// .scale{
-		// 	&-enter-to, &-leave-from { width: 33.3333%; max-height: 300px; }
-		// 	// s-2.5
-		// 	&-enter, &-leave{
-		// 		&-active{animation: scaleShow1024 5s;}
-		// 	}
-		// 	&-leave-active {animation-direction: reverse;}
-		// }
 	}
 	@media screen and (min-width: 1280px) {
-		// s-3
 		.DAworks{
 			padding: 15px 20px 40px;
 			&__item.selected{
@@ -397,44 +323,12 @@ const workStyle = ref('all'),
 				margin-bottom:40px;
 			}
 		}
-		// s-1
-		// #DAworks{
-		// 	&_all:checked ~ .DAworks_list > li, &_ofclWeb:checked ~ .DAworks_list > .ofclWeb,
-		// 	&_actWeb:checked ~ .DAworks_list > .actWeb, &_spaWeb:checked ~ .DAworks_list > .spaWeb,
-		// 	&_oldWorks:checked ~ .DAworks_list > .oldWorks{margin-bottom:40px;}
-		// }
-		// s-2
-		// .scale{
-		// 	&-enter-to, &-leave-from {margin-bottom:40px;}
-		// }
 	}
 	@media screen and (min-width: 1440px) {
-		// s-3
 		.DAworks__item.selected{margin-bottom:60px;}
-		// s-1
-		// #DAworks{
-		// 	&_all:checked ~ .DAworks_list > li, &_ofclWeb:checked ~ .DAworks_list > .ofclWeb,
-		// 	&_actWeb:checked ~ .DAworks_list > .actWeb, &_spaWeb:checked ~ .DAworks_list > .spaWeb,
-		// 	&_oldWorks:checked ~ .DAworks_list > .oldWorks{margin-bottom:60px;}
-		// }	
-		// s-2
-		// .scale{
-		// 	&-enter-to, &-leave-from {margin-bottom:60px;}
-		// }
 	}
 	@media screen and (min-width: 1600px) {
-		// s-3
 		.DAworks__item.selected{width: 25%;}
-		// s-1
-		// #DAworks{
-		// 	&_all:checked ~ .DAworks_list > li, &_ofclWeb:checked ~ .DAworks_list > .ofclWeb,
-		// 	&_actWeb:checked ~ .DAworks_list > .actWeb, &_spaWeb:checked ~ .DAworks_list > .spaWeb,
-		// 	&_oldWorks:checked ~ .DAworks_list > .oldWorks{width: 25%;}
-		// }
-		// s-2
-		// .scale{
-		// 	&-enter-to, &-leave-from {width: 25%;}
-		// }
 	}
 	@media screen and (min-width: 2560px) {
 		.DAworks{
@@ -442,18 +336,7 @@ const workStyle = ref('all'),
 				max-width:$deskMaxWidth;
 				margin:0 auto;
 			}
-			// s-3
 			&__item.selected{width:16.666666%;}
 		}
-		// s-1
-		// #DAworks{
-		// 	&_all:checked ~ .DAworks_list > li, &_ofclWeb:checked ~ .DAworks_list > .ofclWeb,
-		// 	&_actWeb:checked ~ .DAworks_list > .actWeb, &_spaWeb:checked ~ .DAworks_list > .spaWeb,
-		// 	&_oldWorks:checked ~ .DAworks_list > .oldWorks{width: 16.666666%;}
-		// }
-		// s-2
-		// .scale{
-		// 	&-enter-to, &-leave-from {width:16.666666%;}
-		// }
 	}
 </style>

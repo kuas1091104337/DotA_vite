@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../scss/dotaBase.scss"
+    ],
+    "names": [],
+    "file": "dotaBase.min.css"
+}
