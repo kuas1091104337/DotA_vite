@@ -3,9 +3,10 @@ export function DotAContextMenu(DArightMenu){
   const isDArightMenuShow = ref(false),
         windowPos = reactive({ top:0, left:0 }),
         windowVal = reactive({ width:0, height:0 }),
+        pos = reactive({ x:0, y:0 }),
         DArightMenuHide = () => isDArightMenuShow.value = false,
         DArightMenuShow = () => isDArightMenuShow.value = true,
-        DAcontextMenuFn = () => {
+        DAcontextMenuFn = (e) => {
           windowPos.top = e.clientY;
           if(windowPos.top + DArightMenu.H > windowVal.height){ windowPos.top -= DArightMenu.H; }
           windowPos.left = e.clientX;

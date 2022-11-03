@@ -38,7 +38,7 @@ onMounted(() => {
         <img class="DAedm_menu___img" :src="item.src" :alt="item.alt">
         <p class="DAedm_menu___txt">{{item.alt}}</p>
       </li>
-      <Bbox3dLoading v-if="!isImgLoaded"/>
+      <TextLoading v-if="!isImgLoaded"/>
     </ul>
   </div>
   <div class="DAedm_wrap">
@@ -50,6 +50,7 @@ onMounted(() => {
       :alt="item.alt" 
       v-show="edmIdx === idx"
     >
+    <Bbox3dLoading v-if="!isImgLoaded"/>
   </div>
   <div 
     :class="['DAedm_btn',{show:isEdmMenuShow}]"
