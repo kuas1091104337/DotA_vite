@@ -98,4 +98,10 @@
   flex-grow: 1;
   padding:15px;
   margin-top: 44px;
+  &_box{
+    background-image:url("@/assets/img/index/divBg2.jpg");
+    border-radius:$DAborderW;
+		box-shadow:0 1px 6px rgba(0,0,0,0.5);
+		padding:10px;
+  }
 }

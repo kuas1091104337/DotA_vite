@@ -6,6 +6,7 @@ const DArightMenuVal = reactive({W:0,H:0}),
         DArightMenuVal.W = w.value;
         DArightMenuVal.H = h.value;
       };
+
 </script>
 
 <template>
@@ -20,7 +21,7 @@ const DArightMenuVal = reactive({W:0,H:0}),
         </RouterLink>
         <h1 class="bsGoodStar_head_txt">跪求好評五星級</h1>
         <h2 class="bsGoodStar_head_txt">五星好評送百鑽</h2>
-        <a class="bsGoodStar_head_btn" href="javascript:;" target="_blank">
+        <a class="bsGoodStar_head_btn" href="https://kuas1091104337.github.io/brainsport/" target="_blank">
           <img src="../assets/img/bsGoodStar/goodStarPhoneBtn.png" class="bsGoodStar_head_btn_img">
         </a>
       </div>
@@ -34,7 +35,7 @@ const DArightMenuVal = reactive({W:0,H:0}),
       </div>
       <ul class="bsGoodStar_main_nav">
         <li class="bsGoodStar_main_nav_item">
-          <a class="bsGoodStar_main___link bsGoodStar_main___link-bs7poker" href="http://www.brainsportonline.com/" target="_blank"></a>
+          <a class="bsGoodStar_main___link bsGoodStar_main___link-bs7poker" href="https://kuas1091104337.github.io/brainsport/" target="_blank"></a>
         </li>
         <li><a class="bsGoodStar_main___link bsGoodStar_main___link-googlePlay" href="javascript:;"></a></li>
         <li><a class="bsGoodStar_main___link bsGoodStar_main___link-appStore" href="javascript:;"></a></li>

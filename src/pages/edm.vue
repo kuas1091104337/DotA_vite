@@ -41,7 +41,7 @@ onMounted(() => {
       <TextLoading v-if="!isImgLoaded"/>
     </ul>
   </div>
-  <div class="DAedm_wrap">
+  <div class="DAwrap_box DAedm_wrap">
     <img 
       class="DAedm_wrap_img" 
       v-for="(item, idx) in edmData.edmImg" 
@@ -64,10 +64,10 @@ onMounted(() => {
 
 <style lang="scss">
 .DAedm{
-  &_menu,&_wrap{background-image:url("@/assets/img/index/divBg2.jpg");}
   &_menu{
     width:100%;
 		height:100%;
+    background-image:url("@/assets/img/index/divBg2.jpg");
 		overflow:auto;
 		padding-bottom:$DAheadH;
 		margin-top:$DAheadH;
@@ -105,9 +105,6 @@ onMounted(() => {
   }
   &_wrap{
     text-align:center;
-		border-radius:$DAborderW;
-		box-shadow:0 1px 6px rgba(0,0,0,0.5);
-		padding:10px;
     &_img{
       max-width: 100%;
       vertical-align: top;
