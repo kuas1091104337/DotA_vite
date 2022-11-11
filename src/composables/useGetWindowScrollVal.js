@@ -1,7 +1,8 @@
 import { onMounted, onUnmounted, readonly, ref } from "vue"
-
+import { useThrottleDebounce } from '@/composables';
 export function GetWindowScrollVal(){
-  const windowScrollTop = ref(0),
+  const { throttleDebounce } = useThrottleDebounce(),
+        windowScrollTop = ref(0),
         windowScrollMiddle = ref(0),
         windowScrollBottom = ref(0),
         windowScrollFn = () => {
@@ -13,12 +14,14 @@ export function GetWindowScrollVal(){
           windowScrollBottom.value = st + wh;
         };
   onMounted(() => {
-    window.addEventListener('scroll',windowScrollFn);
+    window.addEventListener('scroll',throttleDebounce(windowScrollFn));
+    // window.addEventListener('scroll',windowScrollFn);
     const scrollEvent = new Event('scroll');
     window.dispatchEvent(scrollEvent);
   });
   onUnmounted(() => {
-    window.removeEventListener('scroll',windowScrollFn);
+    window.removeEventListener('scroll',throttleDebounce);
+    // window.removeEventListener('scroll',windowScrollFn);
   })
   return { 
     windowScrollTop:readonly(windowScrollTop), 

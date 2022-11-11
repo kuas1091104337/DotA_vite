@@ -32,3 +32,14 @@ export function DotAContextMenu(DArightMenu){
     DArightMenuShow
   }
 }
+// example
+// import { useDotAContextMenu } from '@/composables';
+// const DArightMenuVal = reactive({W:0,H:0}),
+//       { isDArightMenuShow, windowPos, DArightMenuHide, DArightMenuShow } = useDotAContextMenu(DArightMenuVal),
+// <div class="wrap" @click="DArightMenuHide" @contextmenu.prevent="DArightMenuShow">
+//   <DArightMenu 
+//     :class="{active:isDArightMenuShow}"
+//     :style="{top:windowPos.top+'px',left:windowPos.left+'px'}"
+//     @DArightMenuEle="DArightMenuEleFn"
+//   />
+// </div>

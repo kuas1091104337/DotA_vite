@@ -42,6 +42,7 @@ onMounted(() => {
     </ul>
   </div>
   <div class="DAwrap_box DAedm_wrap">
+    <Bbox3dLoading v-if="!edmData.edmImg.length"/>
     <img 
       class="DAedm_wrap_img" 
       v-for="(item, idx) in edmData.edmImg" 
@@ -50,7 +51,6 @@ onMounted(() => {
       :alt="item.alt" 
       v-show="edmIdx === idx"
     >
-    <Bbox3dLoading v-if="!isImgLoaded"/>
   </div>
   <div 
     :class="['DAedm_btn',{show:isEdmMenuShow}]"

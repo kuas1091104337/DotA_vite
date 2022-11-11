@@ -2,7 +2,7 @@ import { ref } from 'vue';
 export function ImgLoad(){
   let i = 0;
   const isImgLoaded = ref(false),
-        imgLoadFn = (imgArray, objKey) => {
+        imgLoadFn = (imgArray,objKey) => {
           if(imgArray.constructor !== Array){
             console.error('imgArray is not array')
             return false;

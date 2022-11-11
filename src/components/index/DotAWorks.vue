@@ -100,10 +100,11 @@ window.addEventListener('resize',getDomOffset);
 						<p>{{item.made}}</p>
 					</div>
 					<div class="DAworks__item___btn">
-						<a :href="item.href">
+						<RouterLink :to="item.href">
 							<span>{{t('DAworkSee')}}</span>
 							<span>{{t('DAworkSee')}}</span>
-						</a>
+						</RouterLink>
+						<!-- <a :href="item.href"> </a> -->
 					</div>
 				</figcaption>
 			</SlotMousePos>

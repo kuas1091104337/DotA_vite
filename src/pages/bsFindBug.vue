@@ -11,7 +11,7 @@ const DArightMenuVal = reactive({W:0,H:0}),
       rankingData = ref([]), 
       findBugTop = () => window.scrollTo({top:0,behavior:'smooth'});
 onMounted(() => {
-// Secret delete link // https://designer.mocky.io/manage/delete/884ca4e6-b7f0-45a8-ac37-e6cb77b5fbf0/kuas1091104337
+  // Secret delete link // https://designer.mocky.io/manage/delete/884ca4e6-b7f0-45a8-ac37-e6cb77b5fbf0/kuas1091104337
   axios.get('https://run.mocky.io/v3/884ca4e6-b7f0-45a8-ac37-e6cb77b5fbf0')
   .then((res) => {
     rankingData.value = res.data;

@@ -21,6 +21,14 @@ const BoxSide = reactive(['front','back','up','down','left','right']);
 }
 .LoadBox3D{
   margin:50px auto;
+  &.posCenter{
+    margin:auto;
+    position:absolute;
+    top:0;
+    right:0;
+    left:0;
+    bottom:0;
+  }
   &_space{animation:MsizeBox3dRotate 5s linear infinite;}
   &__side{
     .DAblack &{

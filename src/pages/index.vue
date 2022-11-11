@@ -20,9 +20,8 @@ const { windowScrollMiddle } = useGetWindowScrollVal(),
         if(offsetVal.works.top < windowScrollMiddle.value && offsetVal.works.bottom >= windowScrollMiddle.value) return 4;
       });
 onMounted(() => {
-  // Secret delete link
-  // https://designer.mocky.io/manage/delete/7210e4e5-179e-45d0-b743-9ccbfe911863/kuas1091104337
-  axios.get('https://run.mocky.io/v3/7210e4e5-179e-45d0-b743-9ccbfe911863')
+  // Secret delete link // https://designer.mocky.io/manage/delete/d1921830-c7aa-45fb-8e75-b6ca832b9093/kuas1091104337
+  axios.get('https://run.mocky.io/v3/d1921830-c7aa-45fb-8e75-b6ca832b9093')
   .then(res => index.data = res.data)
   .catch(error => console.error(error.response.data));
 });

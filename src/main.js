@@ -1,13 +1,14 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
-import { createI18n } from "vue-i18n";
+import { createI18n } from 'vue-i18n';
 
 import App from '@/App.vue';
 import router from '@/router';
-import us from "@/language/en-US.json";
+import us from '@/language/en-US.json';
 import tw from '@/language/zh-TW.json';
 import cn from '@/language/zh-CN.json';
-import "virtual:svg-icons-register";
+import 'virtual:svg-icons-register';
+import 'default-passive-events'
 import '@/assets/scss/normalize.scss';
 import '@/assets/scss/dotaBase.scss';
 

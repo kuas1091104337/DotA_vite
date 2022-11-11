@@ -1,31 +1,32 @@
 <script setup>
+import { useImgArraysLoad } from '@/composables';
 import axios from 'axios';
-import { reactive } from 'vue';
-let videoImgtime = 200
-const data = reactive({
+let imgChangeTime = 250;
+const { imgArrsLoad } = useImgArraysLoad(),
+      data = reactive({
         plan:[], first:[], second:[], third:[], fourth:[]
       }),
       videoPlay = () => {
         const idx = ref(0),
               isPlay = ref(false),
-              time = ref(null),
+              timer = ref(null),
               idxChange = (val,leng) => {
                 idx.value += val;
                 idx.value = (idx.value + leng) % leng;
               };
         return {
-          num: () => idx.value,
-          timer: () => time.value,
-          play: () => isPlay.value,
+          idx: () => idx.value,
+          timer: () => timer.value,
+          isPlay: () => isPlay.value,
           next: (leng) => idxChange(1,leng),
           prev: (leng) => idxChange(-1,leng),
           change: (leng) => {
             isPlay.value = !isPlay.value;
             if(isPlay.value){
-              clearInterval(time.value);
-              time.value = setInterval(() => idxChange(1,leng),250);
+              clearInterval(timer.value);
+              timer.value = setInterval(() => idxChange(1,leng),imgChangeTime);
             }
-            if(!isPlay.value) clearInterval(time.value);
+            if(!isPlay.value) clearInterval(timer.value);
           }
         }
       },
@@ -34,25 +35,14 @@ const data = reactive({
       video2 = videoPlay(),
       video3 = videoPlay(),
       video4 = videoPlay(),
-      planImg_Next = (leng) => planImg.next(leng),
-      planImg_Prev = (leng) => planImg.prev(leng),
-      video1_Next = (leng) => video1.next(leng),
-      video1_Prev = (leng) => video1.prev(leng),
-      video1_Play = (leng) => video1.change(leng),
-      video2_Next = (leng) => video2.next(leng),
-      video2_Prev = (leng) => video2.prev(leng),
-      video2_Play = (leng) => video2.change(leng),
-      video3_Next = (leng) => video3.next(leng),
-      video3_Prev = (leng) => video3.prev(leng),
-      video3_Play = (leng) => video3.change(leng),
-      video4_Next = (leng) => video4.next(leng),
-      video4_Prev = (leng) => video4.prev(leng),
-      video4_Play = (leng) => video4.change(leng);
+      planLoad = imgArrsLoad(),
+      video1Load = imgArrsLoad(),
+      video2Load = imgArrsLoad(),
+      video3Load = imgArrsLoad(),
+      video4Load = imgArrsLoad();
 onMounted(() => {
   // Secret delete link // link https://designer.mocky.io/manage/delete/fe4a945c-5050-4efb-9cfa-2d18836904fd/kuas1091104337
   axios.get('https://run.mocky.io/v3/fe4a945c-5050-4efb-9cfa-2d18836904fd')
-  // Secret delete link // https://designer.mocky.io/manage/delete/4526b533-ece6-43d1-b538-f526557e37e6/kuas1091104337
-  // axios.get('https://run.mocky.io/v3/4526b533-ece6-43d1-b538-f526557e37e6')
   .then((res) => {
     data.plan = res.data.plan.imgArr.map((el,idx) => {
       return {src:el, alt:`${res.data.plan.title} ${idx}`}
@@ -69,11 +59,20 @@ onMounted(() => {
     data.fourth = res.data.fourth.imgArr.map((el,idx) => {
       return {src:el, alt:`${res.data.fourth.title} ${idx}`}
     });
-    console.log(data);
+    planLoad.imgLoad(data.plan,'src');
+    video1Load.imgLoad(data.first,'src');
+    video2Load.imgLoad(data.second,'src');
+    video3Load.imgLoad(data.third,'src');
+    video4Load.imgLoad(data.fourth,'src');
+    // console.log(data);
   }).catch((error) => {
     console.log(error.response.data);
   });
 });
+// onUnmounted(() => {
+//   planImg = null; video1 = null; video2 = null; video3 = null; video4 = null;
+//   planLoad = null; video1Load = null; video2Load = null; video3Load = null; video4Load = null;
+// });
 </script>
 
 <template>
@@ -82,117 +81,132 @@ onMounted(() => {
   <div class="DAwrap_box DAvideo_wrap">
     <h2 class="DAvideo_wrap_title">BS 7Poker 宣傳影片企劃</h2>
     <div class="DAvideo__box">
-      <div class="DAvideo__box_wrap">
+      <div class="DAvideo__box_wrap" v-if="!planLoad.isLoad()">
         <img 
           class="DAvideo__box_wrap_img"
           v-for="(item, idx) in data.plan" 
           :key="item.src"
           :src="item.src" 
           :alt="item.alt"
-          v-show="planImg.num() === idx"
+          v-show="planImg.idx() === idx"
         >
       </div>
       <ul class="DAvideo__box_ctrl">
-        <li class="DAvideo__box_ctrl_prev" @click="planImg_Prev(data.plan.length)"></li>
-        <li class="DAvideo__box_ctrl_num">{{planImg.num()+1}}</li>
-        <li class="DAvideo__box_ctrl_next" @click="planImg_Next(data.plan.length)"></li>
+        <li class="DAvideo__box_ctrl_prev" @click="planImg.prev(data.plan.length)"></li>
+        <li class="DAvideo__box_ctrl_num">{{planImg.idx()+1}}</li>
+        <li class="DAvideo__box_ctrl_next" @click="planImg.next(data.plan.length)"></li>
       </ul>
-    </div>
-    <h3 class="DAvideo_wrap_title">BS 7Poker 完稿版 宣傳影片</h3>
-    <div class="DAvideo__box">
-      <div class="DAvideo__box_wrap">
-        <img 
-          class="DAvideo__box_wrap_img"
-          v-for="(item, idx) in data.fourth" 
-          :key="item.src"
-          :src="item.src" 
-          :alt="item.alt" 
-          v-show="video4.num() === idx"
-        >
+      <div class="DAvideo__box_load" v-if="planLoad.isLoad()">
+        <Bbox3dLoading class="posCenter"/>
       </div>
-      <div 
-        class="DAvideo__box_play" 
-        v-if="!video4.timer()" 
-        @click="video4_Play(data.fourth.length)"
-      >
-      </div>
-      <ul :class="['DAvideo__box_ctrl',{play:video4.play()}]">
-        <li class="DAvideo__box_ctrl_prev" @click="video4_Prev(data.fourth.length)"></li>
-        <li class="DAvideo__box_ctrl_switch" @click="video4_Play(data.fourth.length)"></li>
-        <li class="DAvideo__box_ctrl_next" @click="video4_Next(data.fourth.length)"></li>
-      </ul>
-    </div>
-    <h3 class="DAvideo_wrap_title">BS 7Poker 第三版 宣傳影片</h3>
-    <div class="DAvideo__box">
-      <div class="DAvideo__box_wrap">
-        <img 
-          class="DAvideo__box_wrap_img"
-          v-for="(item, idx) in data.third" 
-          :key="item.src" 
-          :src="item.src" 
-          :alt="item.alt" 
-          v-show="video3.num() === idx"
-        >
-      </div>
-      <div 
-        class="DAvideo__box_play" 
-        v-if="!video3.timer()" 
-        @click="video3_Play(data.third.length)"
-      >
-      </div>
-      <ul :class="['DAvideo__box_ctrl',{play:video3.play()}]">
-        <li class="DAvideo__box_ctrl_prev" @click="video3_Prev(data.third.length)"></li>
-        <li class="DAvideo__box_ctrl_switch" @click="video3_Play(data.third.length)"></li>
-        <li class="DAvideo__box_ctrl_next" @click="video3_Next(data.third.length)"></li>
-      </ul>
-    </div>
-    <h3 class="DAvideo_wrap_title">BS 7Poker 第二版 宣傳影片</h3>
-    <div class="DAvideo__box">
-      <div class="DAvideo__box_wrap">
-        <img 
-          class="DAvideo__box_wrap_img"
-          v-for="(item, idx) in data.second" 
-          :key="item.src" 
-          :src="item.src" 
-          :alt="item.alt"
-          v-show="video2.num() === idx"
-        >
-      </div>
-      <div 
-        class="DAvideo__box_play" 
-        v-if="!video2.timer()" 
-        @click="video2_Play(data.second.length)"
-      >
-      </div>
-      <ul :class="['DAvideo__box_ctrl',{play:video2.play()}]">
-        <li class="DAvideo__box_ctrl_prev" @click="video2_Prev(data.second.length)"></li>
-        <li class="DAvideo__box_ctrl_switch" @click="video2_Play(data.second.length)"></li>
-        <li class="DAvideo__box_ctrl_next" @click="video2_Next(data.second.length)"></li>
-      </ul>
     </div>
     <h3 class="DAvideo_wrap_title">BS 7Poker 第一版 宣傳影片</h3>
     <div class="DAvideo__box">
-      <div class="DAvideo__box_wrap">
+      <div class="DAvideo__box_wrap" v-if="!video1Load.isLoad()">
         <img 
           class="DAvideo__box_wrap_img"
           v-for="(item, idx) in data.first" 
           :key="item.src" 
           :src="item.src" 
           :alt="item.alt"
-          v-show="video1.num() === idx"
+          v-show="video1.idx() === idx"
         >
       </div>
       <div 
         class="DAvideo__box_play"
         v-if="!video1.timer()"
-        @click="video1_Play(data.first.length)"
+        @click="video1.change(data.first.length)"
       >
       </div>
-      <ul :class="['DAvideo__box_ctrl',{play:video1.play()}]">
-        <li class="DAvideo__box_ctrl_prev" @click="video1_Prev(data.first.length)"></li>
-        <li class="DAvideo__box_ctrl_switch" @click="video1_Play(data.first.length)"></li>
-        <li class="DAvideo__box_ctrl_next" @click="video1_Next(data.first.length)"></li>
+      <ul :class="['DAvideo__box_ctrl',{play:video1.isPlay()}]">
+        <li class="DAvideo__box_ctrl_prev" @click="video1.prev(data.first.length)"></li>
+        <li class="DAvideo__box_ctrl_switch" @click="video1.change(data.first.length)"></li>
+        <li class="DAvideo__box_ctrl_next" @click="video1.next(data.first.length)"></li>
       </ul>
+      <div class="DAvideo__box_load" v-if="video1Load.isLoad()">
+        <Bbox3dLoading class="posCenter"/>
+      </div>
+    </div>
+    <h3 class="DAvideo_wrap_title">BS 7Poker 第二版 宣傳影片</h3>
+    <div class="DAvideo__box">
+      <div class="DAvideo__box_wrap" v-if="!video2Load.isLoad()">
+        <img 
+          class="DAvideo__box_wrap_img"
+          v-for="(item, idx) in data.second" 
+          :key="item.src" 
+          :src="item.src" 
+          :alt="item.alt"
+          v-show="video2.idx() === idx"
+        >
+      </div>
+      <div 
+        class="DAvideo__box_play" 
+        v-if="!video2.timer()" 
+        @click="video2.change(data.second.length)"
+      >
+      </div>
+      <ul :class="['DAvideo__box_ctrl',{play:video2.isPlay()}]">
+        <li class="DAvideo__box_ctrl_prev" @click="video2.prev(data.second.length)"></li>
+        <li class="DAvideo__box_ctrl_switch" @click="video2.change(data.second.length)"></li>
+        <li class="DAvideo__box_ctrl_next" @click="video2.next(data.second.length)"></li>
+      </ul>
+      <div class="DAvideo__box_load" v-if="video2Load.isLoad()">
+        <Bbox3dLoading class="posCenter"/>
+      </div>
+    </div>
+    <h3 class="DAvideo_wrap_title">BS 7Poker 第三版 宣傳影片</h3>
+    <div class="DAvideo__box">
+      <div class="DAvideo__box_wrap" v-if="!video3Load.isLoad()">
+        <img 
+          class="DAvideo__box_wrap_img"
+          v-for="(item, idx) in data.third" 
+          :key="item.src" 
+          :src="item.src" 
+          :alt="item.alt" 
+          v-show="video3.idx() === idx"
+        >
+      </div>
+      <div 
+        class="DAvideo__box_play" 
+        v-if="!video3.timer()" 
+        @click="video3.change(data.third.length)"
+      >
+      </div>
+      <ul :class="['DAvideo__box_ctrl',{play:video3.isPlay()}]">
+        <li class="DAvideo__box_ctrl_prev" @click="video3.prev(data.third.length)"></li>
+        <li class="DAvideo__box_ctrl_switch" @click="video3.change(data.third.length)"></li>
+        <li class="DAvideo__box_ctrl_next" @click="video3.next(data.third.length)"></li>
+      </ul>
+      <div class="DAvideo__box_load" v-if="video3Load.isLoad()">
+        <Bbox3dLoading class="posCenter"/>
+      </div>
+    </div>
+    <h3 class="DAvideo_wrap_title">BS 7Poker 完稿版 宣傳影片</h3>
+    <div class="DAvideo__box">
+      <div class="DAvideo__box_wrap" v-if="!video4Load.isLoad()">
+        <img 
+          class="DAvideo__box_wrap_img"
+          v-for="(item, idx) in data.fourth" 
+          :key="item.src"
+          :src="item.src" 
+          :alt="item.alt" 
+          v-show="video4.idx() === idx"
+        >
+      </div>
+      <div 
+        class="DAvideo__box_play" 
+        v-if="!video4.timer()" 
+        @click="video4.change(data.fourth.length)"
+      >
+      </div>
+      <ul :class="['DAvideo__box_ctrl',{play:video4.isPlay()}]">
+        <li class="DAvideo__box_ctrl_prev" @click="video4.prev(data.fourth.length)"></li>
+        <li class="DAvideo__box_ctrl_switch" @click="video4.change(data.fourth.length)"></li>
+        <li class="DAvideo__box_ctrl_next" @click="video4.next(data.fourth.length)"></li>
+      </ul>
+      <div class="DAvideo__box_load" v-if="video4Load.isLoad()">
+        <Bbox3dLoading class="posCenter"/>
+      </div>
     </div>
     <h3 class="DAvideo_wrap_title">BS 7Poker YouTube版</h3>
     <div class="DAvideo_wrap_video">
@@ -201,10 +215,14 @@ onMounted(() => {
   </div>
 </div>
 <Foot class="DAfoot-normal"/>
-
 </template>
 
 <style lang="scss">
+span.load{background-color:yellow;}
+@keyframes loading {
+  0%{background-position-x: 0%;}
+  100%{background-position-x: 200%;}
+}
 .DAvideo{
   &_wrap{
     &_title{
@@ -232,8 +250,27 @@ onMounted(() => {
   }
   &__box{
     position:relative;
+    padding-bottom: calc(450/800)*100%;
     margin-bottom: 36px;
+    &_load{
+      width: 100%;
+      height: 100%;
+      position:absolute;
+      top:0;
+      left:0;
+      background-color:#ededed;
+      background-image: linear-gradient(
+        110deg, 
+        rgba(#fff,0) 17.5%, rgba(#fff,.75) 42.5%, rgba(#fff,0) 0%, 
+        rgba(#fff,0) 60%, rgba(#fff,.75) 85%, rgba(#fff,0) 0%
+      );
+      background-size: 200% 100%;
+      animation: 2s loading linear infinite;
+    }
     &_wrap{
+      position:absolute;
+      top:0;
+      left:0;
       &_img{
         vertical-align: top;
         width: 100%;
@@ -287,7 +324,10 @@ onMounted(() => {
             box-shadow: 14px 0 0 #fff;
             margin-right: 14px;
           }
-          &_prev, &_next{opacity: .5;}
+          &_prev, &_next{
+            opacity: .5;
+            pointer-events:none;
+          }
         }
       }
       &_switch, &_prev, &_next, &_num{
