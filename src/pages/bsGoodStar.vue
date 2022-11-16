@@ -6,7 +6,6 @@ const DArightMenuVal = reactive({W:0,H:0}),
         DArightMenuVal.W = w.value;
         DArightMenuVal.H = h.value;
       };
-
 </script>
 
 <template>

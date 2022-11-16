@@ -26,6 +26,7 @@ declare module '@vue/runtime-core' {
     SvgIcon: typeof import('./components/vue_ui/SvgIcon.vue')['default']
     TextLoading: typeof import('./components/vue_ui/TextLoading.vue')['default']
     TheWelcome: typeof import('./components/TheWelcome.vue')['default']
+    WaterfallLoadBox: typeof import('./components/vue_ui/WaterfallLoadBox.vue')['default']
     Wbox3dLoading: typeof import('./components/vue_ui/Wbox3dLoading.vue')['default']
     WelcomeItem: typeof import('./components/WelcomeItem.vue')['default']
   }

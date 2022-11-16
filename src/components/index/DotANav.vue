@@ -24,9 +24,6 @@ const {t} = useI18n(),
         window.scrollTo({top:offsetTop - props.headH,behavior:'smooth'});
         props.headBtnFn();
       };
-onUpdated(() => {
-  
-});
 </script>
 
 <template>
