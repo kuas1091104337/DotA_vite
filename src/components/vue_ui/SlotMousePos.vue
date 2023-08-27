@@ -28,7 +28,5 @@ const className = ref(''),
 </template>
 
 <style lang="scss">
-.slotBox{
-
-}
+// .slotBox{ }
 </style>

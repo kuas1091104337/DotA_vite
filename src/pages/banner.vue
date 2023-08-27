@@ -1,8 +1,7 @@
 <script setup>
-import { useThrottleDebounce } from '@/composables';
+import { debounce } from '@/lib/debounce.js'
 import axios from 'axios';
-const { debounce } = useThrottleDebounce(),
-      bnWrap = ref(null),
+const bnWrap = ref(null),
       bnWrapWidth = ref(0),
       bannerData = ref([]),
       popup = reactive({imgIdx:0,imgSrc:'',portrait:false,show:false}),
@@ -62,8 +61,6 @@ const { debounce } = useThrottleDebounce(),
         };
       };
 onMounted(() => {
-  // img error delete link // https://designer.mocky.io/manage/delete/5a9fa123-b0b0-47db-82da-77409b3eebab/kuas1091104337
-  // axios.get('https://run.mocky.io/v3/5a9fa123-b0b0-47db-82da-77409b3eebab')
   // Secret delete link // https://designer.mocky.io/manage/delete/66ef7db7-c5cb-463e-9420-f1d7b8728856/kuas1091104337
   axios.get('https://run.mocky.io/v3/66ef7db7-c5cb-463e-9420-f1d7b8728856')
   .then((res) => {
@@ -105,6 +102,7 @@ onUnmounted(() => {
     <img class="DAbanner_popup_img" :src="popup.imgSrc" @click.stop="">
     <div class="DAbanner_popup_next" @click.stop="popupNextFn"></div>
     <div class="DAbanner_popup_prev" @click.stop="popupPrevFn"></div>
+    <span class="DAbanner_popup_close"></span>
   </div>
 </div>
 <Foot class="DAfoot-normal"/>
@@ -125,14 +123,10 @@ onUnmounted(() => {
   }
   &_wrap{position: relative;}
   &_popup{
-    width: 100%;
-    height: 100%;
+    @extend %wh100pPosfT0L0;
     background-color:rgba(#000,.925);
     opacity:0;
     overflow:auto;
-    position:fixed;
-    top:0;
-    left:0;
     z-index:-1;
     transform:scale3d(.8,.8,1);
     transition:opacity .25s, transform .25s;
@@ -141,29 +135,25 @@ onUnmounted(() => {
       z-index:2;
       transform:scale3d(1,1,1);
     }
-    &_prev, &_next{
+    &_prev, &_next, &_close{
       width: 44px;
       height: 44px;
       box-shadow: 0 0 3px 1px rgba(#000,.3);
       background-color:rgba(#fff,.8);
-      margin-top: -22px;
       position:absolute;
-      top:50%;
       &:before, &:after{
         content:"";
-        width: 18px;
         height: 2px;
         background-color:#000;
-        // border-radius: 2px;
-        margin:auto;
-        position:absolute;
-        top:0;
-        right:0;
-        left:0;
-        bottom:0;
+        @extend %maPosaT0L0R0B0;
       }
       &:before{transform:rotate3d(0,0,1,45deg);}
       &:after{transform:rotate3d(0,0,1,-45deg);}
+    }
+    &_prev, &_next{
+      margin-top: -22px;
+      top:50%;
+      &:before, &:after{width: 18px}
     }
     &_next{
       right:0;
@@ -175,15 +165,18 @@ onUnmounted(() => {
     }
     &_img{
       width: 100vmin;
-      margin:auto;
-      position:absolute;
-      top:0;
-      right:0;
-      left:0;
-      bottom:0;
+      @extend %maPosaT0L0R0B0;
       .portrait &{
         width: auto;
         height: 100vmin;
+      }
+    }
+    &_close{
+      border-radius:50%;
+      top:20px;
+      right:20px;
+      &:before, &:after{
+        width:28px;
       }
     }
   }

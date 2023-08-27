@@ -12,13 +12,14 @@ onUpdated(() => footOffsetTop.value = foot.value.offsetTop);
     <slot>
       <router-link to="/" class="Box3D mBox3D" title="Dot A Home">
         <span class="Box3D_space mBox3D_space">
-          <span v-for="item in BoxSide" :key="item" :class="`Box3D__side mBox3D__side mBox3D__${item}`"></span>
+          <!-- <span v-for="item in BoxSide" :key="item" :class="`Box3D__side mBox3D__side mBox3D__${item}`"></span> -->
+          <span v-for="item in BoxSide" :key="item" :class="['Box3D__side mBox3D__side aa mBox3D__'+item]"></span>
         </span>
         <span class="Box3D_logo mBox3D_logo">A</span>
       </router-link>
     </slot>
     <a class="DAfoot_link" title="與陳宥宏聯絡" href="mailto:kuas1091104337@gmail.com?subject=Hi,Amos. 你好，我是…">Email：kuas1091104337@gmail.com</a>
-    <p class="DAfoot_txt">© 2017 CHEN YU HONG</p>
+    <p class="DAfoot_txt">© 2023 CHEN YU HONG</p>
   </footer>
 </template>
 
@@ -26,8 +27,8 @@ onUpdated(() => footOffsetTop.value = foot.value.offsetTop);
   .DAfoot{
     color:#fff;
     font-weight:300;
-    display: flex;
-    flex-direction: column;
+    display:flex;
+    flex-direction:column;
     align-items:center;
     .dotABoxSpace{margin:50px auto;}
     &_link, &_txt{margin-bottom: 20px;}
@@ -45,7 +46,6 @@ onUpdated(() => footOffsetTop.value = foot.value.offsetTop);
     }
   }
   .mBox3D{
-		margin:40px auto;
     &_space{
       .active &{animation:MsizeBox3dRotate 8s linear infinite;}
     }

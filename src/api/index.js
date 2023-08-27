@@ -2,7 +2,7 @@
 import { getHKAphotoList } from "./herokuapp.js"; 
 import { getHKAdomContent } from "./herokuapp.js"; 
 import { getHKAcoursesList } from "./herokuapp.js"; 
-import { getHKAcourses_id } from "./herokuapp.js"; 
+import { getHKAcourses_id } from "./herokuapp.js";  
 import { getHKAcityList } from "./herokuapp.js"; 
 import { getHKAapiDomainName } from "./herokuapp.js"; 
 import { postHKAauthRegistered } from "./herokuapp.js"; 

@@ -27,10 +27,11 @@ html, body{
   display: flex;
   flex-direction: column;
 }
+img{vertical-align: top;}
 a{
   text-decoration:none;
   display:block;
   -webkit-tap-highlight-color:rgba(#000,0);
 }
-*{box-sizing:border-box;}
+*, *:before, *:after{box-sizing:border-box;}
 </style>

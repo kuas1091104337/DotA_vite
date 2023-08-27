@@ -25,3 +25,6 @@ export function ImgLoad(){
     imgLoadFn
   }
 }
+// example
+// imgLoadFn(data.img,'srcKey');
+// <loading v-if="!isImgLoaded"/>

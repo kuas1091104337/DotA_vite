@@ -1,14 +1,14 @@
 // import { DivMousePosition } from './useDivMousePosition.js';
-import { ThrottleDebounce } from './useThrottleDebounce.js';
 import { DotAContextMenu } from './useDotAContextMenu.js';
 import { GetWindowScrollVal } from './useGetWindowScrollVal.js';
-// import { GetDomScrollVal } from './useGetDomScrollVal.js';
+import { MinNumDigit } from './useMinNumDigit.js';
+import { ImgLoadCallbackFunc } from './useImgLoadCallbackFunc.js';
 import { ImgArraysLoad } from './useImgArraysLoad.js';
 import { ImgLoad } from './useImgLoad.js';
 // export const useDivMousePosition = DivMousePosition;
-export const useThrottleDebounce = ThrottleDebounce; 
 export const useDotAContextMenu = DotAContextMenu; 
 export const useGetWindowScrollVal = GetWindowScrollVal; 
-// export const useGetDomScrollVal = GetDomScrollVal; 
+export const useMinNumDigit = MinNumDigit; 
+export const useImgLoadCallbackFunc = ImgLoadCallbackFunc; 
 export const useImgArraysLoad = ImgArraysLoad; 
 export const useImgLoad = ImgLoad;

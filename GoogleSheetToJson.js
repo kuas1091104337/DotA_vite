@@ -6,12 +6,12 @@ extractSheets(
   {
     spreadsheetKey: '1h3QO4phzP7r_Cuits7EFyMjLYUIZXacOeeXTyjBKGEo',
     credentials: require('./dot-a-vue3-i18n-3b43bdb33ac6.json'),
-    sheetsToExtract: ['index', 'about'],
+    sheetsToExtract: ['index', 'qq888'],
   },
   (err, data) => {
     // 抓到內容之後要做的動作
     if (err) throw err;
-    const read = [...data['index'], ...data['about']];
+    const read = [...data['index'], ...data['qq888']];
     const result = {};
     const files = [];
     for (const key in read[0]) {

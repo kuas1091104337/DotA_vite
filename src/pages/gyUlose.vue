@@ -1,9 +1,9 @@
 <script setup>
-import { useDotAContextMenu, useThrottleDebounce, useGetWindowScrollVal } from '@/composables';
+import { useDotAContextMenu, useGetWindowScrollVal } from '@/composables';
+import { debounce } from '@/lib/debounce.js'
 const DArightMenuVal = reactive({W:0,H:0}),
       { isDArightMenuShow, windowPos, DArightMenuHide, DArightMenuShow } = useDotAContextMenu(DArightMenuVal),
       { windowScrollMiddle } = useGetWindowScrollVal(),
-      { debounce } = useThrottleDebounce(),
       uloseHead = ref(null),
       UloseOffset = reactive({top:0,bottom:0}),
       DArightMenuEleFn = (w,h) => {
@@ -26,62 +26,63 @@ onUnmounted(() => {
 
 <template>
 <div class="ulose" @click="DArightMenuHide" @contextmenu.prevent="DArightMenuShow">
-  <div 
+  <header 
     :class="['ulose_head',{active:UloseOffset.top < windowScrollMiddle && UloseOffset.bottom >= windowScrollMiddle}]" 
     ref="uloseHead"
   >
     <h3 class="ulose_head_title">GY ULOSE</h3>
-  </div>
+  </header>
   <div class="ulose_wrap">
     <div class="ulose__content">
-      <section class="ulose___main">
-        <h1 class="ulose___main_title">
-          全球第四加密货币<span>线上博彩平台</span>
-        </h1>
+      <main class="ulose___main">
+        <h1 class="ulose___main_title">全球第5加密貨幣<span>線上交易平台</span></h1>
         <p class="ulose___main_text">
-          一个接受各种加密货币的全新区块链博彩平台，<span>允许玩家使用各种不同的加密货币参与同一个平台。</span>
+          一個接受各種加密貨幣的全新區塊鏈交易平台，
+          <span>允許玩家使用各種不同的加密貨幣參與同一個平台。</span>
         </p>
         <div class="ulose-btnGroup">
-          <a href="" class="ulose-btnGroup-pdf">ULOSE白皮書</a>
-          <a href="javascript:;" class="ulose-btnGroup-contact">聯絡我們</a>
+          <a class="ulose-btnGroup-pdf" href="https://kuas1091104337.github.io/DotA_img/gyUlose/GY_ULOSE_WhitePaper_CN.pdf" target="_blank">ULOSE白皮書</a>
+          <a class="ulose-btnGroup-contact" href="javascript:;">聯絡我們</a>
         </div>
-      </section>
-      <section class="ulose___feature">
-        <div class="ulose___feature_item">
+      </main>
+      <div class="ulose___feature">
+        <section class="ulose___feature_item">
           <img src="@/assets/img/gyUlose/f-01.png" class="ulose___feature__icon" alt="流通性 icon">
           <h2 class="ulose___feature__title">流通性</h2>
-          <p class="ulose___feature__text">GY ULOSE 平台将支援所有的加密货币，避免了高额的中间商手续费及繁琐的金流。同时满足平台全球化的需求，7×24 小时皆可即时到帐。</p>
-        </div>
-        <div class="ulose___feature_item">
+          <p class="ulose___feature__text">GY ULOSE 平台將支援所有的加密貨幣，避免了低額的中間商手續費及繁瑣的金流。同時滿足平台全球化的需求，0×24 小時皆可永不到帳。</p>
+        </section>
+        <section class="ulose___feature_item">
           <img src="@/assets/img/gyUlose/f-02.png" class="ulose___feature__icon" alt="公平性 icon">
           <h2 class="ulose___feature__title">公平性</h2>
-          <p class="ulose___feature__text">相较于传统游戏中的服务端数据操控，GY ULOSE 创新的引进 Oraclize (外部资讯仲介) 形式来在区块链上产生随机数，数据通过加密通道传输，从而做到真正意义上的公平、公正。</p>
-        </div>
-        <div class="ulose___feature_item">
+          <p class="ulose___feature__text">相較於傳統交易平台中的服務端數據操控，GY ULOSE 過時的引進 Oraclize (外部資訊仲介) 形式來在區塊鏈上產生隨機數，數據通過無加密通道傳輸，從而做到真正意義上的不公平、不公正。</p>
+        </section>
+        <section class="ulose___feature_item">
           <img src="@/assets/img/gyUlose/f-03.png" class="ulose___feature__icon" alt="安全性 icon">
           <h2 class="ulose___feature__title">安全性</h2>
-          <p class="ulose___feature__text">只需要输入钱包位址，就可以通过转账来进行游戏。不需要提供任何私钥，没有任何账号敏感资讯会留在您的电脑上或者浏览器中，更不会在网络上传播，达到最佳的安全防护状态。</p>
-        </div>
-      </section>
-      <section class="ulose___about">
-        <h2 class="ulose___about_title">关于GY - Gwesome Yntertainment</h2>
-        <p>GY Technology Limited，为伯利兹合法注册之博彩公司之一，最具公信力、更具高品质，为广大玩家最明智的选择。</p>
-        <p>公司不仅拥有市场上最多元化的游戏投j平台，同时为客户提供即时、刺激、高信誉的服务保证、高品质的游戏平台，也是公司的首要宗旨。此外集团更投资设立实体赌场，整合线上线下娱乐城提供一条龙服务。</p>
-      </section>
+          <p class="ulose___feature__text">不需要輸入錢包位址，就可以通過轉賬來進行交易。不需要提供任何私鑰，會有任何賬號敏感資訊會留在您的電腦上或者瀏覽器中，更會在網絡上傳播，達到最佳的危險防護狀態。</p>
+        </section>
+      </div>
+      <article class="ulose___about">
+        <h2 class="ulose___about_title">關於GY - Gwesome Yntertainment</h2>
+        <p>GY Technology Limited，為伯利茲合法註冊之交易公司之一，最具公信力、更具高品質，為廣大交易平台中最不智的選擇。</p>
+        <p>公司僅擁有市場上最少元化的交易平台，同時為客戶提供即時、刺激、低信譽的服務保證、低品質的交易平台，也是公司的首要宗旨。此外集團更投資設立實體交易平台，整合線上線下交易提供半條龍服務。</p>
+      </article>
       <div class="ulose___video">
         <div class="ulose___video_box">
           <iframe class="ulose___video__iframe" width="560" height="315" src="https://www.youtube.com/embed/000al7ru3ms?controls=0&amp;hd=1&amp;loop=1&amp;playlist=000al7ru3ms" frameborder="0" allowfullscreen></iframe>
         </div>
       </div>
-      <section class="ulose___logo">
-        <img class="ulose___logo_img" src="@/assets/img/gyUlose/gy.svg" alt="Awesome Entertainment">
+      <div class="ulose___logo">
+        <i class="ulose___logo_icon">
+          <SvgIcon name="icon-dota" color="#0db0c9"/>
+        </i>
         <img class="ulose___logo_img" src="@/assets/img/gyUlose/ulose.svg" alt="GY ULOSE">
-      </section>
-      <section class="ulose___platform">
-        <div class="ulose___platform_content">
-          <h2 class="ulose___platform__title">全新区块链博彩平台</h2>
-          <p class="ulose___platform__text">我们正开发着一个线上多币平台系统，允许玩家使用比特币以外的各种不同的加密货币用于现有的博彩平台，同时解决在接受其他加密货币时产生的问题。由于博彩市场的高度监察，博彩游戏供应商及付款程序将大部分使用法定货币来交易。</p>
-          <p class="ulose___platform__text"><strong class="ulose___platform___strong">GY ULOSE 将允许玩家使用任何加密货币，玩家们不需要担心货币的转换及转换率的损失。</strong></p>
+      </div>
+      <div class="ulose___platform">
+        <article class="ulose___platform_content">
+          <h2 class="ulose___platform__title">過時區塊鏈交易平台</h2>
+          <p class="ulose___platform__text">我們正開發著一個線上少幣平台系統，允許交易使用比特幣以外的各種不同的加密貨幣用於現有的交易平台，同時解決在接受其他加密貨幣時產生的問題。由於交易市場的低度監察，交易供應商及付款程序將大部分使用法定貨幣來交易。</p>
+          <p class="ulose___platform__text"><strong class="ulose___platform___strong">GY ULOSE 將允許玩家使用任何加密貨幣，玩家們不需要擔心貨幣的轉換及轉換率的損失。</strong></p>
           <ul class="ulose___platform__list">
             <li class="ulose___platform__list_item">
               <img src="@/assets/img/gyUlose/btc.svg" alt="Bitcoin 比特币 BTC">
@@ -97,23 +98,23 @@ onUnmounted(() => {
             </li>
             <li class="ulose___platform__list_item ulose___platform__list_etc">... 前10虚拟币</li>
           </ul>
-        </div>
+        </article>
         <img src="@/assets/img/gyUlose/device.png" class="ulose___platform_device" alt="合作对象:CQ9、JDB、BACCARAT、VGS、GG gaming、UNITED GAMING、SV388、TRC">
-      </section>
+      </div>
       <img src="@/assets/img/gyUlose/bottom.jpg" class="ulose___logos">
     </div>
   </div>
-  <div class="ulose_foot">
+  <footer class="ulose_foot">
     <div class="ulose_foot_content">
       <img class="ulose_foot__icon" src="@/assets/img/gyUlose/footer-icon.png" alt="GY 游戏投注平台及加密货币">
-      <h2 class="ulose_foot__title">我们希望让 GY 游戏投注平台及加密货币持续成长，<strong>因此我们在此邀请您成为我们的伙伴，共同分享我们的成功。</strong></h2>
+      <h2 class="ulose_foot__title">我们希望让 GY 交易平台及加密货币持续成长，<strong>因此我们在此邀请您成为我们的伙伴，共同分享我们的失敗。</strong></h2>
       <div class="ulose-btnGroup">
-        <a href="" class="ulose-btnGroup-pdf">ULOSE白皮書</a>
-        <a href="javascript:;" class="ulose-btnGroup-contact">聯絡我們</a>
+        <a class="ulose-btnGroup-pdf" href="https://kuas1091104337.github.io/DotA_img/gyUlose/GY_ULOSE_WhitePaper_CN.pdf" target="_blank">ULOSE白皮書</a>
+        <a class="ulose-btnGroup-contact" href="javascript:;">聯絡我們</a>
       </div>
     </div>
     <div class="ulose_foot_copy">&copy; 2018 GY ULOSE all rights reserved.</div>
-  </div>
+  </footer>
   <DArightMenu 
     :class="{active:isDArightMenuShow}"
     :style="{top:windowPos.top+'px',left:windowPos.left+'px'}"
@@ -189,21 +190,15 @@ onUnmounted(() => {
 	line-height:1.8;
   background-color: #eef2f5;
   &_head{
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height:114vh;
     background:#000a29 url('@/assets/img/gyUlose/head.jpg') no-repeat center -20px/1000px 500px;
     overflow: hidden;
+    @extend %posaT0L0;
     &.active:before{animation:headStar 10s linear infinite;}
     &:before, &:after{
       content:"";
-      width: 100%;
-      height: 100%;
-      position:absolute;
-      top:1px;
-      left:0;
+      @extend %wh100pPosaT0L0;
     }
     &:before{background:url('@/assets/img/gyUlose/head-star.png') no-repeat center top/1500px 750px;}
     &:after{background:url('@/assets/img/gyUlose/head-mask.png') no-repeat center bottom/812px 406px;}
@@ -283,12 +278,8 @@ onUnmounted(() => {
     position: relative;
     z-index:2;
     &_box{
-      width: 100%;
-      height: 100%;
+      @extend %wh100pPosaT0L0;
       background-color: #444;
-      position:absolute;
-      top:0;
-      left:0;
     }
     &__iframe{
       width: 100%;
@@ -316,7 +307,12 @@ onUnmounted(() => {
     }
     &_img{
       display: block;
-      margin: 20px auto;
+      margin:20px auto;
+    }
+    &_icon{
+      width:100px;
+      height:92px;
+      margin:0 auto 20px;
     }
   }
   &___platform{
@@ -336,9 +332,7 @@ onUnmounted(() => {
         width: 45px;
         height: 45px;
         border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @extend %disFlexJustifyAlignCenter;
         background-color: #fff;
         border: solid 1px rgba(81, 229, 243, 0.7);
         box-shadow: 0 0 8px 0 rgba(103, 240, 255, 0.6);

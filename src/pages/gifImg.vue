@@ -57,9 +57,7 @@ onMounted(() => {
                         linear-gradient(45deg,rgba(#000,.5) 25%, transparent 0, transparent 75%, rgba(#000,.5) 0);
       background-size:10px 10px;
       background-position:0 0, 5px 5px;
-      position:fixed;
-      top:0;
-      left:0;
+      @extend %posfT0L0;
       z-index:2;
       > .gifImg_box{
         &_img{margin:auto;}
@@ -77,12 +75,7 @@ onMounted(() => {
             height: 2px;
             background-color:$BGcolor;
             border-radius: 2px;
-            margin:auto;
-            position:absolute;
-            top:0;
-            left:0;
-            right:0;
-            bottom:0;
+            @extend %maPosaT0L0R0B0;
           }
           &:before{transform:rotate3d(0,0,1,45deg);}
           &:after{transform:rotate3d(0,0,1,-45deg);}

@@ -1,8 +1,8 @@
 <script setup>
-import { useGetWindowScrollVal, useDotAContextMenu } from '@/composables';
+import {useGetWindowScrollVal, useDotAContextMenu} from '@/composables';
 import axios from 'axios';
 const DArightMenuVal = reactive({W:0,H:0}),
-      { isDArightMenuShow, windowPos, DArightMenuHide, DArightMenuShow } = useDotAContextMenu(DArightMenuVal),
+      {isDArightMenuShow, windowPos, DArightMenuHide, DArightMenuShow} = useDotAContextMenu(DArightMenuVal),
       DArightMenuEleFn = (w,h) => {
         DArightMenuVal.W = w.value;
         DArightMenuVal.H = h.value;
@@ -31,15 +31,15 @@ onMounted(() => {
       <div class="findBug_head_wrap">
         <RouterLink to="/" class="findBug_head__link">
           <i class="findBug_head__link_icon"><SvgIcon name="icon-dota" color="#1f4cac"/></i>
-          <span class="findBug_head__link_txt">Dot A Home</span>
+          <span class="findBug_head__link_txt">Dot A</span>
         </RouterLink>
         <h1 class="findBug_head__txt">神手來找碴</h1>
         <h2 class="findBug_head__txt">找bug贏獎勵</h2>
         <p class="findBug_head__title">活動時間：2015/08/03(一) ~ 2015/08/25(二) 23:59</p>
       </div>
     </header>
-    <article class="findBug_main">
-      <div class="findBug_main_wrap">
+    <div class="findBug_main">
+      <article class="findBug_main_wrap">
         <h3 class="findBug_main__title">活動方式：</h3>
         <p>活動期間內，回報遊戲中的Bug問題或建議，經官方確認後，將給予以下表格獎勵。(活動獎勵將發放至遊戲中信箱。)</p>
         <table class="rwdTable three">
@@ -79,7 +79,7 @@ onMounted(() => {
             <div class="rwdDivTable_thead_th">積分</div>
             <div class="rwdDivTable_thead_th">更新時間</div>
           </div>
-          <TextLoading v-if="!rankingData.length"/>
+          <BTextLoading v-if="!rankingData.length"/>
           <div class="rwdDivTable_tbody" v-if="rankingData.length">
             <div class="rwdDivTable_tbody_td ranking" data-th="目前名次">{{rankingData[0].ranking}}</div>
             <div class="rwdDivTable_tbody_td" data-th="暱稱">
@@ -101,7 +101,7 @@ onMounted(() => {
             </tr>
           </thead>
           <tbody class="rwdTable_tbody">
-            <TextLoading v-if="!rankingData.length"/>
+            <BTextLoading v-if="!rankingData.length"/>
             <tr 
               v-for="item in rankingData" 
               :key="item.ranking"
@@ -117,10 +117,10 @@ onMounted(() => {
             </tr>
           </tbody>
         </table>
-      </div>
-    </article>
+      </article>
+    </div>
     <Foot/>
-    <div :class="['findBug_top',{show:windowScrollTop > 350}]" @click="findBugTop"></div>
+    <span :class="['findBug_top',{show:windowScrollTop > 350}]" @click="findBugTop"></span>
     <DArightMenu 
       :class="{active:isDArightMenuShow}"
       :style="{top:windowPos.top+'px',left:windowPos.left+'px'}"
@@ -194,20 +194,16 @@ $findBugRed:#ff1818;
       &-desktop, &-pad, &-phoneLandscape{height:0;}
     }
     &_wrap{
-      width: 100%;
-      height: 100%;
       display: flex;
       flex-direction:column;
       justify-content:flex-end;
       align-items:center;
-      position:absolute;
-      top:0;
-      left:0;
+      @extend %wh100pPosaT0L0;
     }
     &__link{
       color: $findBugdBlue;
-      font-size: 18px;
-      font-weight: bold;
+      font-size:18px;
+      font-weight:bold;
       display: flex;
       align-items:center;
       border-radius: 5px;
@@ -221,13 +217,13 @@ $findBugRed:#ff1818;
         box-shadow: 0 1px 3px rgba(130,173,217,.5);
       }
       &_icon{
-        width: 30px;
-        height: 28px;
-        margin-right: 6px;
+        width:30px;
+        height:28px;
+        margin-right:6px;
       }
-      &_txt{transform: skew(-6deg);}
+      &_txt{transform:skew(-6deg);}
     }
-    &__txt{@extend %text-indent-out;}
+    &__txt{@extend %textIndentOut;}
     &__title{
       color: #FFF;
 			font-size: 14px;
@@ -261,11 +257,9 @@ $findBugRed:#ff1818;
       }
       &_wrap{
         width: 100%;
-        position:absolute;
-        top:0;
-        left:0;
+        @extend %posaT0L0;
       }
-      &__txt{@extend %text-indent-out;}
+      &__txt{@extend %textIndentOut;}
     }
   }
   .DAfoot{background-color:$findBugdBlue;}
@@ -442,7 +436,8 @@ $findBugRed:#ff1818;
       &_img{
         &-pad{height: 0;}
         &-desktop{
-          width: auto;
+          width:auto;
+          max-width:1920px;
           height: 100%;
           position:absolute;
           top:0;

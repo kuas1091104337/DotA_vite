@@ -7,7 +7,9 @@ import router from '@/router';
 import us from '@/language/en-US.json';
 import tw from '@/language/zh-TW.json';
 import cn from '@/language/zh-CN.json';
-import 'virtual:svg-icons-register';
+import th from '@/language/th-TH.json';
+import vn from '@/language/vi-VN.json';
+import 'virtual:svg-icons-register'; 
 import 'default-passive-events'
 import '@/assets/scss/normalize.scss';
 import '@/assets/scss/dotaBase.scss';
@@ -21,7 +23,9 @@ const i18n = createI18n({
         messages: {
           'en-US': us,
           'zh-TW': tw,
-          'zh-CN': cn
+          'zh-CN': cn,
+          'th-TH': th,
+          'vi-VN': vn
         }
       });
 

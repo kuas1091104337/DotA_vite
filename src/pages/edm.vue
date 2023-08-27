@@ -27,7 +27,7 @@ onMounted(() => {
 <template>
 <Head/>
 <div class="DAwrap DAedm">
-  <div :class="['DAedm_menu',{show:isEdmMenuShow}]">
+  <aside :class="['DAedm_menu',{show:isEdmMenuShow}]">
     <ul class="DAedm_menu_box">
       <li 
         v-for="(item, idx) in edmData.tagImg" 
@@ -38,9 +38,9 @@ onMounted(() => {
         <img class="DAedm_menu___img" :src="item.src" :alt="item.alt">
         <p class="DAedm_menu___txt">{{item.alt}}</p>
       </li>
-      <TextLoading v-if="!isImgLoaded"/>
+      <BTextLoading v-if="!isImgLoaded"/>
     </ul>
-  </div>
+  </aside>
   <div class="DAwrap_box DAedm_wrap">
     <Bbox3dLoading v-if="!edmData.edmImg.length"/>
     <img 
@@ -65,22 +65,18 @@ onMounted(() => {
 <style lang="scss">
 .DAedm{
   &_menu{
-    width:100%;
-		height:100%;
+    @extend %wh100pPosfT0L0;
     background-image:url("@/assets/img/index/divBg2.jpg");
 		overflow:auto;
 		padding-bottom:$DAheadH;
 		margin-top:$DAheadH;
-		position:fixed;
-		top:0;
-		left:0;
 		z-index:1;
 		transition:transform .4s;
     transform:translate3d(0,-100%,0);
     &.show{transform:translate3d(0,0,0);}
     &_box{
-      @extend %ul-reset;
-      display: flex;
+      @extend %ulReset;
+      display:flex;
       flex-wrap:wrap;
       padding:10px;
     }
@@ -99,16 +95,13 @@ onMounted(() => {
       border-radius:3px;
     }
     &___txt{
-      @extend %text-indent-dot;
+      @extend %textIndentDot;
       margin:.6em 0;
     }
   }
   &_wrap{
     text-align:center;
-    &_img{
-      max-width: 100%;
-      vertical-align: top;
-    }
+    &_img{max-width: 100%}
   }
   &_btn{
     width:44px;
@@ -130,22 +123,13 @@ onMounted(() => {
     &_bar{
       width:26px;
       height:2px;
-      margin:auto;
-      position:absolute;
-      top:0;
-      left:0;
-      right:0;
-      bottom:0;
+      @extend %maPosaT0L0R0B0;
       transition:width .4s, background-color .4s;
       &:before{transform: translate3d(0, -8px, 0);}
       &:after{transform: translate3d(0, 8px, 0);}
       &:before, &:after{
         content:"";
-        width: 100%;
-        height: 100%;
-        position:absolute;
-        top:0;
-        left:0;
+        @extend %wh100pPosaT0L0;
         transition:transform .4s;
       }
     }

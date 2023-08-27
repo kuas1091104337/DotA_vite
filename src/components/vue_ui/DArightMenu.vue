@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted } from "vue";
 import { useI18n } from "vue-i18n";
-const {t} = useI18n(),
+const {t} = useI18n(), 
       emit = defineEmits(['DArightMenuEle']),
       DAmenu = ref(null),
       DAmenuOffsetWidth = ref(0),
@@ -19,15 +19,15 @@ onMounted(() => {
 <div class="DArightMenu" ref="DAmenu" @click="DAmenuStop">
   <router-link to="/" class="Box3D sBox3D" title="Dot A Home">
     <span class="Box3D_space sBox3D_space">
-      <span v-for="item in BoxSide" :key="item" :class="`Box3D__side sBox3D__side sBox3D__${item}`"></span>
+      <span v-for="item in BoxSide" :key="item" :class="['Box3D__side sBox3D__side sBox3D__'+item]"></span>
     </span>
     <span class="Box3D_logo sBox3D_logo">A</span>
   </router-link>
-  <a href="index.html" class="DArightMenu_btn">
+  <router-link to="/" class="DArightMenu_btn">
     Dot A 首頁
     <span class="DArightMenu_btn_side">Dot A 首頁</span>
     <span class="DArightMenu_btn_side">Dot A 首頁</span>
-  </a>
+  </router-link>
   <span class="DArightMenu_line"></span>
   <span class="DArightMenu_line"></span>
   <span class="DArightMenu_line"></span>
@@ -89,11 +89,7 @@ onMounted(() => {
 			~ .DArightMenu_line{background-color:$Pcolor;}
 		}
     &_side{
-      width:100%;
-      height:100%;
-      position:absolute;
-      top:0;
-      left:0;
+      @extend %wh100pPosaT0L0;
       &:first-of-type{ 
         text-shadow:0 1px 1px rgba($dBGcolor,.6);
         background-color:$BGcolor;
@@ -142,7 +138,7 @@ onMounted(() => {
     .DArightMenu_line:nth-of-type(3){transform:translate(130px,0);}
     .DArightMenu_line:nth-of-type(4){transform:translate(-130px,0);}
   }
-  .sBox3D_logo{
+  .sBox3D_logo{ 
     color:$GrayColor;
     &:before{background-color:$GrayColor;}
   }

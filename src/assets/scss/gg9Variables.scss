@@ -1,0 +1,408 @@
+$gg9HeadLightText:#f3b700;
+$gg9HeadLogin:#f5a900;
+$gg9HeadSignup:#9513C2;
+
+$gg9MaxW:2560;
+$gg9MinW:280;
+$gg9MobW:375;
+$gg9MobH:667;
+$gg9W:1920;
+$gg9H:984;
+$gg9BtnMobW:107;
+$gg9BtnMobH:40;
+$gg9BtnW:172;
+$gg9BtnH:65;
+$gg9LogoMobWH:194;
+$gg9LogoW:422;
+$gg9LogoH:425;
+$gg9Fish1ImgAllW:2720;//1藍
+$gg9Fish1W:136;
+$gg9Fish1H:166;
+$gg9Fish2ImgAllW:1440;//2飛
+$gg9Fish2W:160;
+$gg9Fish2H:122;
+$gg9WrapFish1W:242;//1藍+2飛
+$gg9WrapFish1H:166;
+$gg9Fish3_4ImgAllW:4278;//3龜
+$gg9Fish3W:186;
+$gg9Fish3H:148;
+$gg9Fish4W:162;//4龜 3的87%
+$gg9Fish4H:129;
+$gg9WrapFishMob2W:170;//3龜+4龜
+$gg9WrapFishMob2H:90;
+$gg9WrapFish2W:283;
+$gg9WrapFish2H:150;
+$gg9Fish5ImgAllW:3080;//5黃黑
+$gg9Fish5W:154;
+$gg9Fish5H:165;
+$gg9Fish6_13ImgAllW:2640;//6蟹 13的90%
+$gg9Fish6W:147;
+$gg9Fish6H:122;
+$gg9WrapFish3W:261;//5黃黑+6蟹
+$gg9WrapFish3H:177;
+$gg9Fish7ImgAllW:7280;//7紅
+$gg9Fish7W:260;
+$gg9Fish7H:274;
+$gg9Fish8ImgAllW:1606;//8飛彈
+$gg9Fish8HoverImgAllW:2044;
+$gg9Fish8W:146;
+$gg9Fish8H:174;
+$gg9Fish9ImgAllW:1872;//9藍黃
+$gg9Fish9W:144;
+$gg9Fish9H:158;
+$gg9WrapFishMob4W:204;//7紅+8藍黃+9飛彈
+$gg9WrapFishMob4H:229;
+$gg9WrapFish4W:340;
+$gg9WrapFish4H:381;
+$gg9Fish10ImgAllW:2430;//10藍比目
+$gg9Fish10W:162;
+$gg9Fish10H:149;
+$gg9Fish11ImgAllW:1988;//11河
+$gg9Fish11W:142;
+$gg9Fish11H:125;
+$gg9WrapFish5W:246;//10藍比目+11河
+$gg9WrapFish5H:245;
+$gg9Fish12ImgAllW:3146;
+$gg9FishMob12W:73;//12三子
+$gg9FishMob12H:87;
+$gg9Fish12W:121;
+$gg9Fish12H:145;
+$gg9FishMob13W:99;//13蟹
+$gg9FishMob13H:82;
+$gg9Fish13W:165;
+$gg9Fish13H:137;
+$gg9Fish14ImgAllW:3680;//14綠水母
+$gg9FishMob14W:112;// 0.7
+$gg9FishMob14H:179;
+$gg9Fish14W:160;
+$gg9Fish14H:256;
+$gg9Fish15ImgAllW:5415;//15鯊
+$gg9FishMob15W:217; // $gg9FishMob15H:209;
+$gg9FishMob15AllH:240;
+$gg9Fish15W:361;
+$gg9Fish15H:348;
+$gg9Fish15AllH:400;
+$gg9Fish16ImgAllW:2690;//16電曼
+$gg9Fish16HoverImgAllW:1883;
+$gg9FishMob16W:188;// $gg9FishMob16H:166;
+$gg9FishMob16AllH:179;
+$gg9Fish16W:269;
+$gg9Fish16H:237;
+$gg9Fish16AllH:255;
+$gg9Fish17ImgAllW:1390;//17小丑魚
+$gg9Fish17W:139;
+$gg9Fish17H:113;
+$gg9Fish18ImgAllW:12852;//18象
+$gg9Fish18W:612;
+$gg9Fish18H:543;
+$gg9Fish19ImgAllW:18538;//19惡
+$gg9Fish19W:713;
+$gg9Fish19H:471;
+$gg9GunMobW:127;
+$gg9GunMobH:103;
+$gg9GunW:212;
+$gg9GunH:172;
+$gg9GameH:600;
+$gg9GameFishMob1W:90;
+$gg9GameFishMob1H:73;
+$gg9GameFishMob2W:171;
+$gg9GameFishMob2H:134;
+$gg9GameFish1W:163;
+$gg9GameFish1H:132;
+$gg9GameFish2W:285;
+$gg9GameFish2H:223;
+$gg9GameFish2Right:280;
+$btnLightWH:65;
+$ctrlAreaWamount:5;
+$ctrlAreaHamount:5;
+@keyframes fishShadow{
+  0% {transform:rotate3d(0,0,1,3.5deg)}
+  100% {transform:rotate3d(0,0,1,-3.5deg)}
+}
+@keyframes fish1Swim{
+  0% {background-position: 0 0;}
+  100% {background-position: calc(20/19)*100% 0;} // 全部20張圖片 20/(20-1)
+}
+@keyframes fish2Swim{
+  0% {background-position: 0 0;}
+  100% {background-position: calc(9/8)*100% 0;} // 全部9張圖片 9/(9-1)
+}
+@keyframes fish3Swim{
+  0% {background-position: 0 0;}
+  100% {background-position: calc(23/22)*100% 0;} // 全部23張圖片 23/(23-1)
+}
+@keyframes fish5Swim{
+  0% {background-position: 0 0;}
+  100% {background-position: calc(20/19)*100% 0;} // 全部20張圖片 20/(20-1)
+}
+@keyframes fish6_13Swim{
+  0% {background-position: 0 0;}
+  100% {background-position: calc(16/15)*100% 0;} // 全部16張圖片 16/(16-1)
+}
+@keyframes fish7Swim{
+  0% {background-position: 0 0;}
+  100% {background-position: calc(28/27)*100% 0;} // 全部28張圖片 28/(28-1)
+}
+@keyframes fish8Swim{
+  0% {background-position: 0 0;}
+  100% {background-position: calc(11/10)*100% 0;} // 全部11張圖片 11/(11-1)
+}
+@keyframes fish8HoverSwim{
+  0% {background-position: 0 0;}
+  100% {background-position: calc(14/13)*100% 0;} // 全部14張圖片 14/(14-1)
+}
+@keyframes fish9Swim{
+  0% {background-position: 0 0;}
+  100% {background-position: calc(13/12)*100% 0;} // 全部13張圖片 13/(13-1)
+}
+@keyframes fish10Swim{
+  0% {background-position: 0 0;}
+  100% {background-position: calc(15/14)*100% 0;} // 全部15張圖片 15/(15-1)
+}
+@keyframes fish11Swim{
+  0% {background-position: 0 0;}
+  100% {background-position: calc(14/13)*100% 0;} // 全部14張圖片 14/(14-1)
+}
+@keyframes fish12Swim{
+  0% {background-position: 0 0;}
+  100% {background-position: calc(26/25)*100% 0;} // 全部26張圖片 26/(26-1)
+}
+@keyframes fish13RunMob{
+  0%, 49.5%, 100%{
+    bottom: 3%;
+    left: 5%;
+  }
+  0%, 33%, 68%, 100%{transform:rotateX(0deg) rotateY(180deg) rotateZ(0deg)}
+  16.5%, 82.5%{transform:rotateX(-15deg) rotateY(195deg) rotateZ(0deg)}
+  16.5%, 66%, 68%{bottom: 1%}
+  16.5%, 33%, 35%{left: 1%}
+  33%, 35%, 82.5%{bottom: 5%}
+  35%, 49.5%, 66%{transform: rotateX(15deg) rotateY(-15deg) rotateZ(0deg)}
+  66%, 68%, 82.5%{left: 9%}
+}
+@keyframes fish13Run{
+  0%, 49.5%, 100%{
+    bottom: 20%;
+    left: 33%;
+  }
+  0%, 33%, 68%, 100%{transform:rotateX(0deg) rotateY(180deg) rotateZ(0deg)}
+  16.5%, 82.5%{transform:rotateX(-15deg) rotateY(195deg) rotateZ(0deg)}
+  16.5%, 66%, 68%{bottom: 18%}
+  16.5%, 33%, 35%{left: 30%}
+  33%, 35%, 82.5%{bottom: 22%}
+  35%, 49.5%, 66%{transform: rotateX(15deg) rotateY(-15deg) rotateZ(0deg)}
+  66%, 68%, 82.5%{left: 36%}
+}
+@keyframes fish14RunMob{
+  0%, 100%{
+    left:-2%;
+    bottom:12.5%;
+    transform:rotate(5deg);
+  }
+  5%, 27.5%, 50%{transform:rotate(25deg)}
+  22.5%, 45%{transform:rotate(15deg)}
+  5% {
+    left:0%;
+    bottom:14.5%;
+  }
+  22.5% {
+    left:1%;
+    bottom:14%;
+  }
+  27.5% {
+    left:3%;
+    bottom:16%;
+  }
+  45% {
+    left:4%;
+    bottom:15.5%;
+  }
+  50% {
+    left:6%;
+    bottom:17.5%;
+  }
+  75% {
+    left:2%;
+    bottom:15%;
+    transform:rotate(-10deg);
+  }
+}
+@keyframes fish14Run{
+  0%, 100%{
+    left:8%;
+    bottom:12.5%;
+    transform:rotate(5deg);
+  }
+  5%, 27.5%, 50%{transform:rotate(25deg)}
+  22.5%, 45%{transform:rotate(15deg)}
+  5% {
+    left:10%;
+    bottom:16.5%;
+  }
+  22.5% {
+    left:11%;
+    bottom:15.5%;
+  }
+  27.5% {
+    left:13%;
+    bottom:19.5%;
+  }
+  45% {
+    left:14%;
+    bottom:18.5%;
+  }
+  50% {
+    left:16%;
+    bottom:22.5%;
+  }
+  75% {
+    left:12%;
+    bottom:17.5%;
+    transform:rotate(-10deg);
+  }
+}
+@keyframes fish14Swim{
+  0% {background-position: 0 0;}
+  100% {background-position: calc(23/22)*100% 0;} // 全部23張圖片 23/(23-1)
+}
+@keyframes fish15RunMob{
+  0%, 100%{
+    top: 4.5%;
+    left: -16.5%;
+    transform:rotate3d(0,0,1,-20deg);
+  }
+  33.3% {
+    top: 6.5%;
+    left: -18.5%;
+    transform:rotate3d(0,0,0,0deg);
+  }
+  66.6% {
+    top: 8.5%;
+    left: -14.5%;
+    transform:rotate3d(0,0,1,-5deg);
+  }
+}
+@keyframes fish15Run{
+  0%, 100%{
+    top: 16.5%;
+    left: 17.5%;
+    transform:rotate3d(0,0,1,-20deg);
+  }
+  33.3% {
+    top: 19.5%;
+    left: 20.5%;
+    transform:rotate3d(0,0,0,0deg);
+  }
+  66.6% {
+    top: 22.5%;
+    left: 14.5%;
+    transform:rotate3d(0,0,1,-5deg);
+  }
+}
+@keyframes fish15Swim{
+  0% {background-position: 0 0;}
+  100% {background-position: calc(15/14)*100% 0;} // 全部15張圖片 15/(15-1)
+}
+@keyframes fish16RunMob{
+  0%, 100%{
+    top:50%;
+    right:-9%;
+    transform:rotateX(0deg) rotateY(0deg) rotateZ(-15deg);
+  }
+  24%, 26%{
+    top:56%;
+    right:-10%;
+  }
+  24%{transform:rotateX(-15deg) rotateY(0deg) rotateZ(0deg)}
+  26% {transform:rotateX(5deg) rotateY(180deg) rotateZ(5deg)}
+  50% {
+    top:54%;
+    right:-8%;
+    transform:rotateX(20deg) rotateY(165deg) rotateZ(10deg);
+  }
+  74%, 76%{
+    top:52%;
+    right:-6.5%;
+  }
+  74%{transform:rotateX(5deg) rotateY(165deg) rotateZ(0deg)}
+  76%{transform:rotateX(-10deg) rotateY(0deg) rotateZ(-5deg)}
+}
+@keyframes fish16Run{
+  0%, 100%{
+    top:33.5%;
+    right:22.5%;
+    transform:rotateX(0deg) rotateY(0deg) rotateZ(-15deg);
+  }
+  24%, 26%{
+    top:45.5%;
+    right:20.5%;
+  }
+  24%{transform:rotateX(-15deg) rotateY(0deg) rotateZ(0deg)}
+  26% {transform:rotateX(5deg) rotateY(180deg) rotateZ(5deg)}
+  50% {
+    top:51.5%;
+    right:24.5%;
+    transform:rotateX(20deg) rotateY(165deg) rotateZ(10deg);
+  }
+  74%, 76%{
+    top:37.5%;
+    right:27%;
+  }
+  74%{transform:rotateX(5deg) rotateY(165deg) rotateZ(0deg)}
+  76%{transform:rotateX(-10deg) rotateY(0deg) rotateZ(-5deg)}
+}
+@keyframes fish16Swim{
+  0% {background-position: 0 0;}
+  100% {background-position: calc(10/9)*100% 0;} // 全部10張圖片 10/(10-1)
+}
+@keyframes fish16HoverSwim{
+  0% {background-position: 0 0;}
+  100% {background-position: calc(7/6)*100% 0;} // 全部7張圖片 7/(7-1)
+}
+@keyframes fish17Swim{
+  0% {background-position: 0 0;}
+  100% {background-position: calc(10/9)*100% 0;} // 全部10張圖片 10/(10-1)
+}
+@keyframes fish18Swim{
+  0% {background-position: 0 0;}
+  100% {background-position: calc(21/20)*100% 0;} // 全部21張圖片 21/(21-1)
+}
+@keyframes fish19Swim{
+  0% {background-position: 0 0;}
+  100% {background-position: calc(26/25)*100% 0;} // 全部26張圖片 26/(26-1)
+}
+@keyframes fish19Run{
+  0% {transform:skew(31.65deg) translate3d(-10%,0,0)}
+  100% {transform:skew(31.65deg) translate3d(25%,0,0)}
+}
+@keyframes fishOtherRunMob{
+  0%, 98%, 100%{transform:rotateX(3deg) rotateY(180deg) rotateZ(8deg) translate3d(0,0,5px)}
+  24%, 26%{transform:rotateX(-3deg) rotateY(180deg) rotateZ(-8deg) translate3d(-6px,6px,5px)}
+  50% {transform:rotateX(3deg) rotateY(180deg) rotateZ(8deg) translate3d(6px,-2px,5px)}
+  74% {transform:rotateX(-3deg) rotateY(180deg) rotateZ(-8deg) translate3d(-6px,-6px,5px)}
+}
+@keyframes fishOtherRun{
+  0%, 98%, 100%{transform:rotate3d(.4,.6,1,8deg) translate3d(0,0,5px)}
+  24%, 26%{transform:rotate3d(-0.4,-0.6,-1,8deg) translate3d(-6px,6px,5px)}
+  50% {transform:rotate3d(.4,.6,1,8deg) translate3d(6px,-2px,5px)}
+  74% {transform:rotate3d(-0.4,-0.6,-1,8deg) translate3d(-6px,-6px,5px)}
+}
+@keyframes fishBubble{
+  0%{
+		opacity:.25;
+		transform:scale(.6);
+	}
+	25%{
+		opacity:.75;
+    transform:scale(.9);
+	}
+	50%{
+		opacity:1;
+    transform:scale(1);
+	}
+	75%{opacity:.4;}
+	100%{
+		opacity:.1;
+		transform:scale(1.1);
+	}
+}

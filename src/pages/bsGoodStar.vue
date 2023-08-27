@@ -16,22 +16,22 @@ const DArightMenuVal = reactive({W:0,H:0}),
       <div class="bsGoodStar_head_wrap">
         <RouterLink to="/" class="bsGoodStar_head_link">
           <i class="bsGoodStar_head_link_icon"><SvgIcon name="icon-dota" color="#fff"/></i>
-          <span class="bsGoodStar_head_link_txt">Dot A Home</span>
+          <span class="bsGoodStar_head_link_txt">Dot A</span>
         </RouterLink>
         <h1 class="bsGoodStar_head_txt">跪求好評五星級</h1>
         <h2 class="bsGoodStar_head_txt">五星好評送百鑽</h2>
         <a class="bsGoodStar_head_btn" href="https://kuas1091104337.github.io/brainsport/" target="_blank">
-          <img src="../assets/img/bsGoodStar/goodStarPhoneBtn.png" class="bsGoodStar_head_btn_img">
+          <img src="@/assets/img/bsGoodStar/goodStarPhoneBtn.png" class="bsGoodStar_head_btn_img">
         </a>
       </div>
     </header>
-    <article class="bsGoodStar_main">
-      <div class="bsGoodStar_main_wrap">
+    <div class="bsGoodStar_main">
+      <article class="bsGoodStar_main_wrap">
         <h3 class="bsGoodStar_main__title">活動時間：</h3>
         <p class="bsGoodStar_main__txt">2015/08/03(一) ~ 2015/10/04(日) 23:59</p>
         <h3 class="bsGoodStar_main__title">活動方式：</h3>
         <p class="bsGoodStar_main__txt">在Google play 商店頁留下「五顆星星+您的遊戲暱稱」，即可獲得鑽石5000顆，就是讓你有省錢! ( 鑽石將在3個工作天內發送至遊戲內信箱，請玩家留意 )</p>
-      </div>
+      </article>
       <ul class="bsGoodStar_main_nav">
         <li class="bsGoodStar_main_nav_item">
           <a class="bsGoodStar_main___link bsGoodStar_main___link-bs7poker" href="https://kuas1091104337.github.io/brainsport/" target="_blank"></a>
@@ -40,7 +40,7 @@ const DArightMenuVal = reactive({W:0,H:0}),
         <li><a class="bsGoodStar_main___link bsGoodStar_main___link-appStore" href="javascript:;"></a></li>
       </ul>
       <Foot/>
-    </article>
+    </div>
     <DArightMenu 
       :class="{active:isDArightMenuShow}"
       :style="{top:windowPos.top+'px',left:windowPos.left+'px'}"
@@ -62,22 +62,14 @@ const DArightMenuVal = reactive({W:0,H:0}),
       display: block;
       &-desk{height: 0;}
     }
-    &_wrap{
-      width: 100%;
-      height: 100%;
-      position:absolute;
-      top:0;
-      left:0;
-    }
+    &_wrap{@extend %wh100pPosaT0L0;}
     &_link{
       color: #fff;
       display: flex;
       align-items:center;
       border-radius: 5px;
       padding: 5px;
-      position: absolute;
-      top:0;
-      left:0;
+      @extend %posaT0L0;
       transition: background-color 0.4s, box-shadow 0.4s;
       &:hover{background-color:rgba(#fff,.3)}
       &_icon{
@@ -87,7 +79,7 @@ const DArightMenuVal = reactive({W:0,H:0}),
       }
       &_txt{transform: skew(-6deg);}
     }
-    &_txt{@extend %text-indent-out;}
+    &_txt{@extend %textIndentOut;}
     &_btn{
       width:20.1525%;
 			display:block;
@@ -120,7 +112,12 @@ const DArightMenuVal = reactive({W:0,H:0}),
 			font-size:18px;
 			text-shadow:0 0 1px rgba(0,0,0,0.35);
     }
-    &_nav{@extend %ul-reset;}
+    &_nav{@extend %ulReset;}
+    &___link{
+      &-googlePlay, &-appStore{
+        &:before, &:after{@extend %wh100pPosaT0L0}
+      }
+    }
     > .DAfoot{
       background-color:rgba(#000,.6);
       margin-top: auto;
@@ -167,7 +164,7 @@ const DArightMenuVal = reactive({W:0,H:0}),
         &-bs7poker{
           width:179px;
           height:87px;
-          background-image:url("../assets/img/bsGoodStar/goodStarBtn.png");
+          background-image:url("@/assets/img/bsGoodStar/goodStarBtn.png");
           background-position:-734px 0;
 			    margin:0 auto;
         }
@@ -177,12 +174,7 @@ const DArightMenuVal = reactive({W:0,H:0}),
 			    margin:25px;
           &:before, &:after{
             content:"";
-            width: 100%;
-            height: 100%;
-            background-image:url("../assets/img/bsGoodStar/goodStarBtn.png");
-            position:absolute;
-            top:0;
-            left:0;
+            background-image:url("@/assets/img/bsGoodStar/goodStarBtn.png");
             transition:opacity .4s;
           }
         }

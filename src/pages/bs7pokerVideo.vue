@@ -78,7 +78,7 @@ onMounted(() => {
 <template>
 <Head/>
 <div class="DAwrap DAvideo">
-  <div class="DAwrap_box DAvideo_wrap">
+  <main class="DAwrap_box DAvideo_wrap">
     <h2 class="DAvideo_wrap_title">BS 7Poker 宣傳影片企劃</h2>
     <div class="DAvideo__box">
       <div class="DAvideo__box_wrap" v-if="!planLoad.isLoad()">
@@ -212,7 +212,7 @@ onMounted(() => {
     <div class="DAvideo_wrap_video">
       <iframe class="DAvideo_wrap_video_iframe" width="560" height="315" src="https://www.youtube.com/embed/8vAXeBS1yLA?hd=1&amp;loop=1&amp;playlist=8vAXeBS1yLA" frameborder="0" allowfullscreen></iframe>
     </div>
-  </div>
+  </main>
 </div>
 <Foot class="DAfoot-normal"/>
 </template>
@@ -239,13 +239,7 @@ span.load{background-color:yellow;}
       padding-bottom: calc(315/560)*100%;
       margin: 0 auto 36px;
       position: relative;
-      &_iframe{
-        width: 100%;
-        height: 100%;
-        position:absolute;
-        top:0;
-        left:0;
-      }
+      &_iframe{@extend %wh100pPosaT0L0;}
     }
   }
   &__box{
@@ -253,11 +247,7 @@ span.load{background-color:yellow;}
     padding-bottom: calc(450/800)*100%;
     margin-bottom: 36px;
     &_load{
-      width: 100%;
-      height: 100%;
-      position:absolute;
-      top:0;
-      left:0;
+      @extend %wh100pPosaT0L0;
       background-color:#ededed;
       background-image: linear-gradient(
         110deg, 
@@ -268,26 +258,12 @@ span.load{background-color:yellow;}
       animation: 2s loading linear infinite;
     }
     &_wrap{
-      position:absolute;
-      top:0;
-      left:0;
-      &_img{
-        vertical-align: top;
-        width: 100%;
-      }
+      @extend %posaT0L0;
+      &_img{width: 100%}
     }
     &_play{
-      width: 100%;
-      height: 100%;
-      position:absolute;
-      top:0;
-      left:0;
-      &:before, &:after{
-        position:absolute;
-        top:50%;
-        left:50%;
-        transform:translate3d(-50%,-50%,0);
-      }
+      @extend %wh100pPosaT0L0;
+      &:before, &:after{@extend %posaT50pL50pTran3d-50p}
       &:before{
         content:"";
         width: 68px;
@@ -305,7 +281,7 @@ span.load{background-color:yellow;}
       }
     }
     &_ctrl{
-      @extend %ul-reset;
+      @extend %ulReset;
       width: 100%;
       height: 46px;
       display: flex;

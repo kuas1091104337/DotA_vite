@@ -21,7 +21,6 @@ pre, code, kbd, samp {
 a { background-color: transparent; }
 abbr[title] {
   border-bottom: none;
-  text-decoration: underline;
   text-decoration: underline dotted;
 }
 b, strong { font-weight: bolder; }
@@ -59,13 +58,13 @@ legend {
   white-space: normal;
   max-width: 100%;
   display: table;
-  box-sizing: border-box;
+  // box-sizing: border-box;
   padding: 0;
 }
 progress { vertical-align: baseline; }
 textarea { overflow: auto; }
 [type="checkbox"], [type="radio"] {
-  box-sizing: border-box;
+  // box-sizing: border-box;
   padding: 0;
 }
 [type="number"]{

@@ -42,28 +42,24 @@ onMounted(() => {
       <ul class="head__menu">
         <slot name="nav" :headH="headH" :headBtnFn="headBtnFn">
           <li class="head__menu_item">
-            <RouterLink to="/official" class="head__menu__link">
+            <!-- /official -->
+            <RouterLink to="/" class="head__menu__link">
               官網專案
               <span class="head__menu__link_frontSide">官網專案</span>
               <span class="head__menu__link_backSide">官網專案</span>
             </RouterLink>
           </li>
           <li class="head__menu_item">
-            <RouterLink to="/onePage" class="head__menu__link">
-              一頁式商務網頁
-              <span class="head__menu__link_frontSide">一頁式商務網頁</span>
-              <span class="head__menu__link_backSide">一頁式商務網頁</span>
-            </RouterLink>
-          </li>
-          <li class="head__menu_item">
-            <RouterLink to="/event" class="head__menu__link">
+            <!-- /event -->
+            <RouterLink to="/" class="head__menu__link">
               活動網頁
               <span class="head__menu__link_frontSide">活動網頁</span>
               <span class="head__menu__link_backSide">活動網頁</span>
             </RouterLink>
           </li>
           <li class="head__menu_item">
-            <RouterLink to="/early" class="head__menu__link">
+            <!-- /early -->
+            <RouterLink to="/" class="head__menu__link">
               早期作品
               <span class="head__menu__link_frontSide">早期作品</span>
               <span class="head__menu__link_backSide">早期作品</span>
@@ -93,9 +89,7 @@ onMounted(() => {
     background-color:$BGcolor;
     display:block;
     border-radius:2px;
-    position: absolute;
-    top: 0;
-    left: 0;
+    @extend %posaT0L0;
   }
   %linkActive{
     color:$BGcolor;
@@ -107,11 +101,9 @@ onMounted(() => {
     line-height:$DAheadH;
     width:max(100%,$mobileMinWidth);
     height:$DAheadH;
-    background-image: url("@/assets/img/index/HFbg.jpg");
+    background-image:url("@/assets/img/index/HFbg.jpg");
     box-shadow:0 0 5px rgba(#000,.2);
-    position:fixed;
-    top:0;
-    left:0;
+    @extend %posfT0L0;
     z-index: 2;
     &_bg{
       width: 100%;
@@ -195,7 +187,7 @@ onMounted(() => {
       }
     }
     &__menu{
-      @extend %ul-reset;
+      @extend %ulReset;
       width:65%;
       max-width: 320px;
 			height:100%;
@@ -216,6 +208,7 @@ onMounted(() => {
       }
       &__link{
         padding:0 15px;
+        position: relative;
         &_frontSide, &_backSide{
           font-size: 0;
           vertical-align: top;
@@ -256,10 +249,13 @@ onMounted(() => {
         > .svg-icon > *{transition:fill .4s}
       }
       &__menu{
-        @extend %ul-reset;
+        @extend %ulReset;
         height: 0;
         overflow: hidden;
         transition:height .4s;
+      }
+      &_item .head__menu__link{
+        &_frontSide, &_backSide{@extend %wh100pPosaT0L0}
       }
     }
   }
@@ -312,18 +308,12 @@ onMounted(() => {
           }
           .head__menu__link{
             height: 100%;
-            position: relative;
             transform-style:preserve-3d;
             transform:perspective(250px) translate3d(0,0,-22px);
             transition:transform .3s;
             &_frontSide, &_backSide{
               font-size: 16px;
               text-align: center;
-              width:100%;
-              height:100%;
-              position:absolute;
-              top:0;
-              left:0;
             }
             &_frontSide{
               background-image: url("@/assets/img/index/HFbg.jpg");

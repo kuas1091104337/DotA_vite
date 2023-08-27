@@ -41,8 +41,8 @@ onMounted(() => {
 
 <style lang="scss">
 @keyframes imgLoad{
-  0%{background-position-x: 0;}
-  100%{background-position-x: 120px;}
+  0%{background-position-x:0;}
+  100%{background-position-x:120px;}
 }
 .WFloadBox{
   // background-image:linear-gradient(
@@ -64,11 +64,7 @@ onMounted(() => {
     background-image:none;
   }
   &_img{
-    width: 100%;
-    height: 100%;
-    position:absolute;
-    top:0;
-    left:0;
+    @extend %wh100pPosaT0L0;
     .load &{opacity: 0;}
     .error &{
       width: auto;

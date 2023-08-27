@@ -1,27 +1,23 @@
 import { onMounted, onUnmounted, readonly, ref } from "vue"
-import { useThrottleDebounce } from '@/composables';
+import { throttleDebounce } from '@/lib/throttleDebounce.js'
 export function GetWindowScrollVal(){
-  const { throttleDebounce } = useThrottleDebounce(),
-        windowScrollTop = ref(0),
+  const windowScrollTop = ref(0),
         windowScrollMiddle = ref(0),
         windowScrollBottom = ref(0),
         windowScrollFn = () => {
           const st = document.scrollingElement.scrollTop,
                 wh = window.innerHeight;
           windowScrollTop.value = st;
-          // windowScrollMiddle.value = st + wh*0.6;
           windowScrollMiddle.value = st + wh/2;
           windowScrollBottom.value = st + wh;
         };
   onMounted(() => {
-    window.addEventListener('scroll',throttleDebounce(windowScrollFn));
-    // window.addEventListener('scroll',windowScrollFn);
+    window.addEventListener('scroll',throttleDebounce(windowScrollFn)); // ('scroll',windowScrollFn);
     const scrollEvent = new Event('scroll');
     window.dispatchEvent(scrollEvent);
   });
   onUnmounted(() => {
-    window.removeEventListener('scroll',throttleDebounce);
-    // window.removeEventListener('scroll',windowScrollFn);
+    window.removeEventListener('scroll',throttleDebounce); // ('scroll',windowScrollFn);
   })
   return { 
     windowScrollTop:readonly(windowScrollTop), 

@@ -1,3 +1,4 @@
+import { ref } from "vue";
 export function ImgArraysLoad(){
   const imgArrsLoad = () => {
           let i = 0;
