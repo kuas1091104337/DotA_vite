@@ -12,8 +12,7 @@ const {t} = useI18n(),
       workStyleChange = (val) => works.style = val,
       DAworksLink = (id) => /^http/gi.test(id) ? window.open(id) : router.push({path:id});
 onMounted(() => {
-  // Secret delete link // https://designer.mocky.io/manage/delete/ee20544c-5db4-46f8-aa46-c1d3fdebf468/kuas1091104337
-  axios.get('https://run.mocky.io/v3/ee20544c-5db4-46f8-aa46-c1d3fdebf468')
+  axios.get('https://run.mocky.io/v3/6dcde1ab-ba94-47ac-8f91-12d8e8b8f11b')
   .then(res => {
     works.data = res.data;
     console.log(res.data);

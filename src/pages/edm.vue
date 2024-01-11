@@ -11,8 +11,7 @@ const { isImgLoaded, imgLoadFn } = useImgLoad(),
         isEdmMenuShow.value = false;
       };
 onMounted(() => {
-  // Secret delete link // https://designer.mocky.io/manage/delete/5e47b9cc-e4c8-4449-8c9b-1076dafbc5a5/kuas1091104337
-  axios.get('https://run.mocky.io/v3/5e47b9cc-e4c8-4449-8c9b-1076dafbc5a5')
+  axios.get('https://run.mocky.io/v3/fd7becbb-00bb-40f5-b146-b5e2c5ed3f94')
   .then((res) => {
     edmData.tagImg = res.data.tagImg;
     edmData.edmImg = res.data.edmImg;

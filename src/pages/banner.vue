@@ -61,8 +61,7 @@ const bnWrap = ref(null),
         };
       };
 onMounted(() => {
-  // Secret delete link // https://designer.mocky.io/manage/delete/66ef7db7-c5cb-463e-9420-f1d7b8728856/kuas1091104337
-  axios.get('https://run.mocky.io/v3/66ef7db7-c5cb-463e-9420-f1d7b8728856')
+  axios.get('https://run.mocky.io/v3/d1d95a0e-480d-408d-be3b-5e9d533f6ead')
   .then((res) => {
     bannerData.value = res.data;
   }).catch((error) => {

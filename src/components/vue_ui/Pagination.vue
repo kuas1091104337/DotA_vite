@@ -23,20 +23,14 @@ const props = defineProps({
 
 <template>
 <ul>
-  <li 
-    v-if="currentPage > 1" 
-    @click="currentPage--"
-  >上一页</li>
+  <li v-if="currentPage>1" @click="currentPage--">上一页</li>
   <li 
     v-for="page in pages" 
     :key="page" 
     :class="{ active: page === currentPage }" 
     @click="currentPage = page"
   >{{ page }}</li>
-  <li 
-    v-if="currentPage < totalPages" 
-    @click="currentPage++"
-  >下一页</li>
+  <li v-if="currentPage<totalPages" @click="currentPage++">下一页</li>
 </ul>
 </template>
 

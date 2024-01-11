@@ -55,8 +55,7 @@ const newsSlideTime = 3500,
         timer = setInterval(newsSlide,newsSlideTime);
       };
 onMounted(() => {
-  // Secret delete link // https://designer.mocky.io/manage/delete/ecfde131-172a-429b-be16-b7fd1b1de89d/bnnklrt7AJixA9OGgMguXrQK0MY2IoYvotgn
-  axios.get('https://run.mocky.io/v3/ecfde131-172a-429b-be16-b7fd1b1de89d')
+  axios.get('https://run.mocky.io/v3/2714972c-3acd-45db-8170-a0c23ea0dbe9')
   .then((res) => {
     lgNewsData.value = res.data;
     lgNewsData.value.push(res.data[0]);

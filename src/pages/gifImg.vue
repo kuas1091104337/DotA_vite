@@ -12,8 +12,7 @@ const gifImgData = ref([]),
         if(e.target.parentNode.classList.contains('show')) e.stopPropagation();
       };
 onMounted(() => {
-  // Secret delete link https://designer.mocky.io/manage/delete/32e0f766-ef6d-4b09-9ad0-772d8b98f632/kuas1091104337
-  axios.get('https://run.mocky.io/v3/32e0f766-ef6d-4b09-9ad0-772d8b98f632')
+  axios.get('https://run.mocky.io/v3/9afe00e6-93e0-4e76-ad77-e008ec1b67b9')
   .then((res) => {
     gifImgData.value = res.data;
     imgLoadFn(gifImgData.value,'src');

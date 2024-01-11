@@ -1,6 +1,6 @@
 import axios from 'axios';
 const runMocky = axios.create({ 
-  baseURL:'https://run.mocky.io/v3/', 
+  baseURL:'https://run.mocky.io/', 
 });
 // https://run.mocky.io/v3/667a75bc-2621-4bd8-8f8f-f2bb74ad3e21
 runMocky.interceptors.request.use(
@@ -13,4 +13,4 @@ runMocky.interceptors.response.use(
   (error) => Promise.reject(error)
 );
 
-export const getRunMockyIndex = () => runMocky.get("/667a75bc-2621-4bd8-8f8f-f2bb74ad3e21");
+export const getRunMockyIndex = () => runMocky.get("/v3//667a75bc-2621-4bd8-8f8f-f2bb74ad3e21");

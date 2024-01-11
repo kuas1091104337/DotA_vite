@@ -41,8 +41,7 @@ const { imgArrsLoad } = useImgArraysLoad(),
       video3Load = imgArrsLoad(),
       video4Load = imgArrsLoad();
 onMounted(() => {
-  // Secret delete link // link https://designer.mocky.io/manage/delete/fe4a945c-5050-4efb-9cfa-2d18836904fd/kuas1091104337
-  axios.get('https://run.mocky.io/v3/fe4a945c-5050-4efb-9cfa-2d18836904fd')
+  axios.get('https://run.mocky.io/v3/f748543a-e51b-4497-b89b-cb4cb849ab4d')
   .then((res) => {
     data.plan = res.data.plan.imgArr.map((el,idx) => {
       return {src:el, alt:`${res.data.plan.title} ${idx}`}

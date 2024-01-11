@@ -47,8 +47,7 @@ watch(() => roulette.selectPR,(newVal) => {
   }
 });
 onMounted(() => {
-  // Secret delete link // https://designer.mocky.io/manage/delete/80684193-f878-481e-9628-abfc2d9e0a22/kuas1091104337
-  axios.get('https://run.mocky.io/v3/80684193-f878-481e-9628-abfc2d9e0a22')
+  axios.get('https://run.mocky.io/v3/95271908-4a97-4713-878f-e1f1dc47e5d8')
   .then((res) => {
     roulette.PR = res.data.probability;
     roulette.winnerList = res.data.winnerList;
